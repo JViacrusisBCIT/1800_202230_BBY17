@@ -6,6 +6,8 @@
 
 ## General Info
 This browser based web application to ...
+
+* Hi my name is Will. I'm excited about this project to combined all of the material we've learned so far into an application.
 	
 ## Technologies
 Technologies used for this project:
