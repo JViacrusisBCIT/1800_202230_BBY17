@@ -6,6 +6,8 @@
 
 ## General Info
 This browser based web application to ...
+
+Hi my name is Kate. I'm excited about this project because it will look good on my resume:}
 	
 ## Technologies
 Technologies used for this project:
