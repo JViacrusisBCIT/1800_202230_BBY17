@@ -6,8 +6,14 @@
 
 ## General Info
 This browser based web application to ...
+<<<<<<< HEAD
 
 Hi my name is Kate. I'm excited about this project because it will look good on my resume:}
+=======
+* Hi my name is Justin. I'm excited about this project because I love conflict. 
+* Hi my name is Will. I'm excited about this project to combined all of the material we've learned so far into an application.
+* Hi my name is Bhavnoor, I'm excited about this project because it is going to be my first web application! 
+>>>>>>> 27e1acfc3ed9700b4c639895069ddf17d86b3723
 	
 ## Technologies
 Technologies used for this project:
