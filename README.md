@@ -7,6 +7,7 @@
 ## General Info
 This browser based web application to ...
 * Hi my name is Justin. I'm excited about this project because I love conflict. 
+* Hi my name is Will. I'm excited about this project to combined all of the material we've learned so far into an application.
 * Hi my name is Bhavnoor, I excited about this project because it is going to be my first web application! 
 	
 ## Technologies
