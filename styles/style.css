@@ -8,6 +8,10 @@
   --tertiary-color: #00d9cc;
 }
 
+.btn-minor {
+  background-color: #bd4c44;
+}
+
 body {
   background: var(--primary-color);
   margin: 0 auto;
@@ -47,7 +51,25 @@ body {
 /*/////////////////////////////
 ///////////////////////////////
 /////////////////////////////*/
-.welcome-banner { grid-area: welcome-banner; }
+
+/*/////////////////////////////
+//          Navbar           //
+/////////////////////////////*/
+.welcome-banner { 
+  grid-area: welcome-banner;
+
+  margin: 0 auto;
+}
+
+#welcome-banner-close-button {
+  position: relative;
+  bottom: 22vh;
+  left: 35vw;
+}
+
+/*/////////////////////////////
+///////////////////////////////
+/////////////////////////////*/
 
 .tile1 { grid-area: tile1; }
 
