@@ -30,8 +30,23 @@ body {
     "footer footer footer footer";
 }
 
-.nav-bar { grid-area: nav-bar; }
+/*/////////////////////////////
+//          Navbar           //
+/////////////////////////////*/
+.nav-bar { 
+  grid-area: nav-bar; 
+}
 
+#top-navbar > img {
+  width: 100px;
+  height: 100px;
+  
+  margin: 0 auto;
+}
+
+/*/////////////////////////////
+///////////////////////////////
+/////////////////////////////*/
 .welcome-banner { grid-area: welcome-banner; }
 
 .tile1 { grid-area: tile1; }
@@ -50,7 +65,7 @@ body {
   grid-area: footer;
 }
 
-#bottom-navbar > img{
+#bottom-navbar > img {
   width: 100px;
   height: 100px;
   margin: 0 auto;
