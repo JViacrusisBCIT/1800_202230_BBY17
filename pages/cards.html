@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Our Stylesheets -->  
-  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/cards-style.css">
 
   <!-- Our Javascript Files -->
   <!-- put scripts here--> 
@@ -28,42 +28,16 @@
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
 
-  <!-- TEMPORARY!! -->
-  <style>
-
-    body {
-      padding: 4% 0;
-    }
-
-    .card-body {
-      padding: auto 0;
-      background-color: rgb(234, 234, 234);
-    }
-
-    img {
-      aspect-ratio: 1 / 1;
-      padding: 5%;
-    }
-
-    .mini-logo {
-      display: inline;
-      width: 20%;
-      aspect-ratio: 1 / 1;
-    }
-
-    h5 {
-      display: inline;
-    }
-
-  </style>
-
-
 </head>
 
 
 <body>
 
   <div class="container">
+
+    <div class="cell nav-bar">
+      <nav id="nav"></nav>
+    </div>
 
     <div id="gallery">
       <div class="row row-cols-1 row-cols-md-6 g-4">
@@ -106,7 +80,13 @@
       </div>
     </div>
 
+    <div class="cell footer">
+      <nav id="foot"></nav>
+    </div>
+
   </div>
+
+  <script src="../scripts/inject_templates.js"></script>
 
 </body>
 

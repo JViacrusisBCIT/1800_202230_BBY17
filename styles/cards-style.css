@@ -1,0 +1,23 @@
+body {
+  padding: 4% 0;
+}
+
+.card-body {
+  padding: auto 0;
+  background-color: rgb(234, 234, 234);
+}
+
+.card-img-top {
+  aspect-ratio: 1 / 1;
+  padding: 5%;
+}
+
+.mini-logo {
+  display: inline;
+  width: 20%;
+  aspect-ratio: 1 / 1;
+}
+
+.card-title {
+  display: inline;
+}
