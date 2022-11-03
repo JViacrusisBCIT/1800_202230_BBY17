@@ -28,24 +28,50 @@
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
 
+  <!-- TEMPORARY!! -->
+  <style>
+
+    body {
+      padding: 4% 0;
+    }
+
+    .card-body {
+      padding: auto 0;
+      background-color: rgb(234, 234, 234);
+    }
+
+    img {
+      aspect-ratio: 1 / 1;
+      padding: 5%;
+    }
+
+    .mini-logo {
+      display: inline;
+      width: 20%;
+      aspect-ratio: 1 / 1;
+    }
+
+    h5 {
+      display: inline;
+    }
+
+  </style>
+
+
 </head>
 
 
 <body>
-  
+
   <div class="container">
 
-    <div class="cell nav-bar">
-      <nav id="nav"></nav>
-    </div>
-    
-
     <div id="gallery">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="row row-cols-1 row-cols-md-6 g-4">
         <div class="col">
           <div class="card h-100">
             <img src="../images/drink1.png" class="card-img-top" alt="...">
             <div class="card-body">
+              <img src="../images/image.jpg" class="mini-logo" />
               <h5 class="card-title">Card title</h5>
             </div>
           </div>
@@ -54,6 +80,7 @@
           <div class="card h-100">
             <img src="../images/drink2.png" class="card-img-top" alt="...">
             <div class="card-body">
+              <img src="../images/image.jpg" class="mini-logo" />
               <h5 class="card-title">Card title</h5>
             </div>
           </div>
@@ -62,31 +89,24 @@
           <div class="card h-100">
             <img src="../images/drink3.png" class="card-img-top" alt="...">
             <div class="card-body">
+              <img src="../images/image.jpg" class="mini-logo" />
               <h5 class="card-title">Card title</h5>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="card h-100">
-            <img src="../images/image.jpg" class="card-img-top" alt="...">
+            <img src="../images/image1.png" class="card-img-top" alt="...">
             <div class="card-body">
+              <img src="../images/image.jpg" class="mini-logo" />
               <h5 class="card-title">Card title</h5>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-
-    <div class="cell footer">
-      <nav id="foot"></nav>
-    </div>
 
   </div>
-
-
-  <!-- Our JavaScript files -->
-  <script src="./scripts/inject_templates.js"></script>
 
 </body>
 
