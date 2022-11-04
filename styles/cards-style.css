@@ -1,5 +1,80 @@
+:root {
+  /* --primary-color: #cfcfcf; */
+  /* --secondary-color: #D9D9D9; */
+  /* --tertiary-color: #F0F0F0; */
+
+  --primary-color: #d7fcf9;
+  --secondary-color: #00b5aa;
+  --tertiary-color: #00d9cc;
+}
+
 body {
-  padding: 4% 0;
+  background: var(--primary-color);
+}
+
+.container {  
+  display: grid;
+  height: 100vh;
+  width: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.6fr 0.8fr 1.4fr 1.4fr 0.6fr;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "nav-bar"
+    "gallery"
+    "gallery"
+    "gallery"
+    "footer";
+}
+
+
+/*/////////////////////////////
+//          Navbar           //
+/////////////////////////////*/
+.nav-bar { 
+  grid-area: nav-bar; 
+}
+
+#top-navbar > img {
+  width: 100px;
+  height: 100px;
+  
+  margin: 0 auto;
+}
+
+/*/////////////////////////////
+///////////////////////////////
+/////////////////////////////*/
+
+/*/////////////////////////////
+//          Navbar           //
+/////////////////////////////*/
+.welcome-banner { 
+  grid-area: welcome-banner;
+
+  margin: 0 auto;
+}
+
+#welcome-banner-close-button {
+  position: relative;
+  bottom: 22vh;
+  left: 35vw;
+}
+
+/*/////////////////////////////
+///////////////////////////////
+/////////////////////////////*/
+
+
+/*/////////////////////////////
+//          Gallery          //
+/////////////////////////////*/
+
+#gallery {
+  padding: 5%;
+  grid-area: gallery;
 }
 
 .card-body {
@@ -21,3 +96,25 @@ body {
 .card-title {
   display: inline;
 }
+
+/*/////////////////////////////
+///////////////////////////////
+/////////////////////////////*/
+
+
+/*/////////////////////////////
+//          Footer           //
+/////////////////////////////*/
+.footer {
+  grid-area: footer;
+}
+
+#bottom-navbar > img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+/*/////////////////////////////
+///////////////////////////////
+/////////////////////////////*/
+
