@@ -1,5 +1,5 @@
 // Injects a single card into the gallery
-function displayCard(idIndex, cardTitle, fileType, thumbnailPath) {
+function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
 
     let cardTemplate = document.getElementById("cardTemplate");
 
@@ -7,10 +7,12 @@ function displayCard(idIndex, cardTitle, fileType, thumbnailPath) {
     newCard.id = idIndex;
 
     newCard.querySelector('.card-title').innerHTML = cardTitle;
-    newCard.querySelector('.card-logo').src = `../images/${fileType}.jpg`;
+    newCard.querySelector('.card-logo').src = `../images/${filePath}`;
 
     if (thumbnailPath.length != 0) {
-        displayThumbnail(newCard, thumbnailPath);
+        newCard.querySelector('.card-img-top').src = '../images/' + thumbnailPath;
+    } else {
+        newCard.querySelector('.card-img-top').remove();
     }
     
     document.getElementById('gallery').appendChild(newCard);
@@ -20,27 +22,20 @@ function displayCard(idIndex, cardTitle, fileType, thumbnailPath) {
 }
 
 
-// Displays the thumbnail if the card is visual
-function displayThumbnail(card, thumbnailPath) {
-
-    console.log(card);
-    card.querySelector('.card-img-top').src = '../images/' + thumbnailPath;
-
-}
-
-
 // Injects a card for each student in the database
-function loadStudents(num_of_students) {
+function loadStudents() {
 
-    for (let i = 0; i < num_of_students; i++) {
-
-        let card = displayCard(i, "Justin Victor Viacrusis", "image2", "drink2.png");
-
-    }
+    db.collection("temp-students").get()
+        .then(students => {
+            students.forEach(std => {
+                let firstName = std.data().firstname.charAt(0).toUpperCase() + std.data().firstname.slice(1);
+                let lastName = std.data().lastname.charAt(0).toUpperCase() + std.data().lastname.slice(1);
+                let fullName = firstName + " " + lastName;
+                let card = displayCard(1, fullName, "user.svg", "drink2.png");
+            })
+        });
 
 }
-
-var test_num = 14;
 
 // Calls the inject_navfoot function
-loadStudents(test_num);
+loadStudents();
