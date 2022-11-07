@@ -13,21 +13,25 @@ body {
 }
 
 .container {  
-  display: grid;
-  height: 100vh;
-  width: 100vh;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.6fr 0.8fr 1.4fr 1.4fr 0.6fr;
-  grid-auto-columns: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "nav-bar"
-    "gallery"
-    "gallery"
-    "gallery"
-    "footer";
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.6fr 0.8fr 1.4fr 1.4fr 0.6fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "nav-bar"
+      "gallery"
+      "gallery"
+      "gallery"
+      "footer";
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: unset !important;
 }
+
 
 
 /*/////////////////////////////
@@ -72,13 +76,13 @@ body {
 //          Gallery          //
 /////////////////////////////*/
 
-#gallery {
+.gallery {
   padding: 5%;
   grid-area: gallery;
+  overflow-y: scroll;
 }
 
 .card-body {
-  padding: auto 0;
   background-color: rgb(234, 234, 234);
 }
 
@@ -87,7 +91,7 @@ body {
   padding: 5%;
 }
 
-.mini-logo {
+.card-logo {
   display: inline;
   width: 20%;
   aspect-ratio: 1 / 1;
