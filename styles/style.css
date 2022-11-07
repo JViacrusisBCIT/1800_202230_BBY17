@@ -32,6 +32,9 @@ body {
     ". tile1 tile2 ."
     ". tile3 tile4 ."
     "footer footer footer footer";
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: unset !important;
 }
 
 /*/////////////////////////////
@@ -42,8 +45,8 @@ body {
 }
 
 #top-navbar > img {
-  width: 100px;
-  height: 100px;
+  width: 65px;
+  height: 65px;
   
   margin: 0 auto;
 }
@@ -57,7 +60,6 @@ body {
 /////////////////////////////*/
 .welcome-banner { 
   grid-area: welcome-banner;
-
   margin: 0 auto;
 }
 
@@ -112,8 +114,8 @@ body {
 }
 
 #bottom-navbar > img {
-  width: 100px;
-  height: 100px;
+  width: 65px;
+  height: 65px;
   margin: 0 auto;
 }
 /*/////////////////////////////
