@@ -26,24 +26,35 @@ function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
 }
 
 
-function setupGallery(columns, visualHeader, nonVisualHeader) {
+function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
 
     gallery.className = "row rows-cols-1 g-4";
     gallery.classList.add("row-cols-md-" + columns);
 
-    if (visualHeader.length != 0) {
+    if (visualHeaderDesc.length != 0) {
 
         let visualSection = document.createElement("div");
         visualSection.id = "visual-section";
+
+        let visualHeader = document.createElement("h3");
+        visualHeader.innerHTML = visualHeaderDesc;
+
+        visualSection.appendChild(visualHeader);
 
         gallery.appendChild(visualSection);
 
     }
 
-    if (nonVisualHeader.length != 0) {
+    if (nonVisualHeaderDesc.length != 0) {
 
         let nonVisualSection = document.createElement("div");
         nonVisualSection.id = "non-visual-section";
+
+        let nonVisualHeader = document.createElement("h3");
+        nonVisualHeader.innerHTML = nonVisualHeaderDesc;
+
+        nonVisualSection.appendChild(nonVisualHeader);
+
         gallery.appendChild(nonVisualSection);
 
     }
