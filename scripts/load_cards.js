@@ -1,3 +1,7 @@
+// Locates the gallery on the HTML page
+var gallery = document.getElementById('gallery');
+
+
 // Injects a single card into the gallery
 function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
 
@@ -15,9 +19,34 @@ function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
         newCard.querySelector('.card-img-top').remove();
     }
     
-    document.getElementById('gallery').appendChild(newCard);
+    gallery.appendChild(newCard);
 
     return newCard;
+
+}
+
+
+function setupGallery(columns, visualHeader, nonVisualHeader) {
+
+    gallery.className = "row rows-cols-1 g-4";
+    gallery.classList.add("row-cols-md-" + columns);
+
+    if (visualHeader.length != 0) {
+
+        let visualSection = document.createElement("div");
+        visualSection.id = "visual-section";
+
+        gallery.appendChild(visualSection);
+
+    }
+
+    if (nonVisualHeader.length != 0) {
+
+        let nonVisualSection = document.createElement("div");
+        nonVisualSection.id = "non-visual-section";
+        gallery.appendChild(nonVisualSection);
+
+    }
 
 }
 
@@ -29,6 +58,8 @@ function loadStudents() {
         .then(students => {
 
             let i = 0;
+
+            setupGallery(4, "Test", "Our Students");
 
             // For each student, display a card with a unique ID and their full name in the footer.
             students.forEach(std => {
