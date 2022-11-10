@@ -1,11 +1,18 @@
-// Locates the gallery on the HTML page
+// Locates the div container that holds the gallery
 var gallery = document.getElementById('gallery');
+
+// The container for the visual cards
+var visualCards;
+
+// The container for the non-visual cards
+var nonVisualCards;
+
+// Locates the template for the cards
+var cardTemplate = document.getElementById("cardTemplate");
 
 
 // Injects a single card into the gallery
 function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
-
-    let cardTemplate = document.getElementById("cardTemplate");
 
     let newCard = cardTemplate.content.cloneNode(true);
     newCard.id = "card" + idIndex;
@@ -13,50 +20,40 @@ function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
     newCard.querySelector('.card-title').innerHTML = cardTitle;
     newCard.querySelector('.card-logo').src = `../images/${filePath}`;
 
+
     if (thumbnailPath.length != 0) {
         newCard.querySelector('.card-img-top').src = '../images/' + thumbnailPath;
+        visualCards.appendChild(newCard);
     } else {
         newCard.querySelector('.card-img-top').remove();
     }
     
-    gallery.appendChild(newCard);
-
     return newCard;
 
 }
 
-
+// Sets up the gallery before displaying the cards
 function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
-
-    gallery.className = "row rows-cols-1 g-4";
-    gallery.classList.add("row-cols-md-" + columns);
 
     if (visualHeaderDesc.length != 0) {
 
-        let visualSection = document.createElement("div");
-        visualSection.id = "visual-section";
-
+        // Inserts a header label above the visual cards
         let visualHeader = document.createElement("h3");
         visualHeader.innerHTML = visualHeaderDesc;
+        visualHeader.id = "visual-header";
 
-        visualSection.appendChild(visualHeader);
+        gallery.appendChild(visualHeader);
 
-        gallery.appendChild(visualSection);
 
-    }
+        // Inserts a container to display the visual cards in
+        visualCards = document.createElement("div");
+        visualCards.id = "visual-cards";
 
-    if (nonVisualHeaderDesc.length != 0) {
+        visualCards.className = "row rows-cols-1 g-4";
+        visualCards.classList.add("row-cols-md-" + columns);
 
-        let nonVisualSection = document.createElement("div");
-        nonVisualSection.id = "non-visual-section";
-
-        let nonVisualHeader = document.createElement("h3");
-        nonVisualHeader.innerHTML = nonVisualHeaderDesc;
-
-        nonVisualSection.appendChild(nonVisualHeader);
-
-        gallery.appendChild(nonVisualSection);
-
+        gallery.appendChild(visualCards);
+        
     }
 
 }
