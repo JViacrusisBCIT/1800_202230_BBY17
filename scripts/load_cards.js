@@ -4,7 +4,7 @@ function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
     let cardTemplate = document.getElementById("cardTemplate");
 
     let newCard = cardTemplate.content.cloneNode(true);
-    newCard.id = idIndex;
+    newCard.id = "card" + idIndex;
 
     newCard.querySelector('.card-title').innerHTML = cardTitle;
     newCard.querySelector('.card-logo').src = `../images/${filePath}`;
@@ -27,12 +27,22 @@ function loadStudents() {
 
     db.collection("temp-students").get()
         .then(students => {
+
+            let i = 0;
+
+            // For each student, display a card with a unique ID and their full name in the footer.
             students.forEach(std => {
+
                 let firstName = std.data().firstname.charAt(0).toUpperCase() + std.data().firstname.slice(1);
                 let lastName = std.data().lastname.charAt(0).toUpperCase() + std.data().lastname.slice(1);
                 let fullName = firstName + " " + lastName;
-                let card = displayCard(1, fullName, "user.svg", "drink2.png");
+
+                let card = displayCard(i, fullName, "user.svg", "drink2.png");
+
+                i++;
+
             })
+
         });
 
 }
