@@ -26,6 +26,7 @@ function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
         visualCards.appendChild(newCard);
     } else {
         newCard.querySelector('.card-img-top').remove();
+        nonVisualCards.appendChild(newCard);
     }
     
     return newCard;
@@ -41,6 +42,7 @@ function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
         let visualHeader = document.createElement("h3");
         visualHeader.innerHTML = visualHeaderDesc;
         visualHeader.id = "visual-header";
+        visualHeader.className = "cards-header";
 
         gallery.appendChild(visualHeader);
 
@@ -56,6 +58,28 @@ function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
         
     }
 
+    if (nonVisualHeaderDesc.length != 0) {
+
+        // Inserts a header label above the non visual cards
+        let nonVisualHeader = document.createElement("h3");
+        nonVisualHeader.innerHTML = nonVisualHeaderDesc;
+        nonVisualHeader.id = "non-visual-header";
+        nonVisualHeader.className = "cards-header";
+
+        gallery.appendChild(nonVisualHeader);
+
+
+        // Inserts a container to display the non visual cards in
+        nonVisualCards = document.createElement("div");
+        nonVisualCards.id = "non-visual-cards";
+
+        nonVisualCards.className = "row rows-cols-1 g-4";
+        nonVisualCards.classList.add("row-cols-md-" + columns);
+
+        gallery.appendChild(nonVisualCards);
+        
+    }
+
 }
 
 
@@ -67,7 +91,7 @@ function loadStudents() {
 
             let i = 0;
 
-            setupGallery(4, "Test", "Our Students");
+            setupGallery(6, "Students", "skdfl");
 
             // For each student, display a card with a unique ID and their full name in the footer.
             students.forEach(std => {
@@ -79,6 +103,16 @@ function loadStudents() {
                 let card = displayCard(i, fullName, "user.svg", "drink2.png");
 
                 i++;
+
+            })
+
+            i = 0;
+
+            // For each student, display a card with a unique ID and their full name in the footer.
+            students.forEach(std => {
+
+                let umName = std.data().lastname + " " + std.data().firstname;
+                let card = displayCard(1, umName, "user.svg", "");
 
             })
 

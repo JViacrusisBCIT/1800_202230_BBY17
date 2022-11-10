@@ -56,13 +56,13 @@ body {
 /////////////////////////////*/
 
 .gallery {
-  padding: 5%;
+  padding: 1% 5% 6% 5%;
   grid-area: gallery;
   overflow-y: scroll;
 }
 
-#visual-header {
-  margin-bottom: 2%;
+.cards-header {
+  margin: 4% 0 3% 0;
 }
 
 .card-body {
