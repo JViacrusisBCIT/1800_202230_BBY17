@@ -1,7 +1,18 @@
+// Locates the div container that holds the gallery
+var gallery = document.getElementById('gallery');
+
+// The container for the visual cards
+var visualCards;
+
+// The container for the non-visual cards
+var nonVisualCards;
+
+// Locates the template for the cards
+var cardTemplate = document.getElementById("cardTemplate");
+
+
 // Injects a single card into the gallery
 function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
-
-    let cardTemplate = document.getElementById("cardTemplate");
 
     let newCard = cardTemplate.content.cloneNode(true);
     newCard.id = "card" + idIndex;
@@ -9,15 +20,65 @@ function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
     newCard.querySelector('.card-title').innerHTML = cardTitle;
     newCard.querySelector('.card-logo').src = `../images/${filePath}`;
 
+
     if (thumbnailPath.length != 0) {
         newCard.querySelector('.card-img-top').src = '../images/' + thumbnailPath;
+        visualCards.appendChild(newCard);
     } else {
         newCard.querySelector('.card-img-top').remove();
+        nonVisualCards.appendChild(newCard);
     }
     
-    document.getElementById('gallery').appendChild(newCard);
-
     return newCard;
+
+}
+
+// Sets up the gallery before displaying the cards
+function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
+
+    if (visualHeaderDesc.length != 0) {
+
+        // Inserts a header label above the visual cards
+        let visualHeader = document.createElement("h3");
+        visualHeader.innerHTML = visualHeaderDesc;
+        visualHeader.id = "visual-header";
+        visualHeader.className = "cards-header";
+
+        gallery.appendChild(visualHeader);
+
+
+        // Inserts a container to display the visual cards in
+        visualCards = document.createElement("div");
+        visualCards.id = "visual-cards";
+
+        visualCards.className = "row rows-cols-1 g-4";
+        visualCards.classList.add("row-cols-md-" + columns);
+
+        gallery.appendChild(visualCards);
+        
+    }
+
+    if (nonVisualHeaderDesc.length != 0) {
+
+        // Inserts a header label above the non visual cards
+        let nonVisualHeader = document.createElement("h3");
+        nonVisualHeader.innerHTML = nonVisualHeaderDesc;
+        nonVisualHeader.id = "non-visual-header";
+        nonVisualHeader.className = "cards-header";
+
+        gallery.appendChild(nonVisualHeader);
+
+
+        // Inserts a container to display the non visual cards in
+        nonVisualCards = document.createElement("div");
+        nonVisualCards.id = "non-visual-cards";
+
+        nonVisualCards.className = "row rows-cols-1 g-4";
+        nonVisualCards.classList.add("row-cols-md-" + columns);
+
+        gallery.appendChild(nonVisualCards);
+        
+    }
 
 }
 
@@ -30,6 +91,8 @@ function loadStudents() {
 
             let i = 0;
 
+            setupGallery(6, "Students", "skdfl");
+
             // For each student, display a card with a unique ID and their full name in the footer.
             students.forEach(std => {
 
@@ -40,6 +103,16 @@ function loadStudents() {
                 let card = displayCard(i, fullName, "user.svg", "drink2.png");
 
                 i++;
+
+            })
+
+            i = 0;
+
+            // For each student, display a card with a unique ID and their full name in the footer.
+            students.forEach(std => {
+
+                let umName = std.data().lastname + " " + std.data().firstname;
+                let card = displayCard(1, umName, "user.svg", "");
 
             })
 
