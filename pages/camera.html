@@ -11,7 +11,7 @@
 
   <!-- Our Stylesheets -->  
   <link rel="stylesheet" href="../styles/style.css">
-  <link rel="stylesheet" href="../styles/camera.css"
+  <link rel="stylesheet" href="../styles/camera.css">
 
   <!-- Our Javascript Files -->
   <!-- put scripts here--> 
@@ -36,30 +36,44 @@
   
   <div class="container">
 
-    <div class="cell nav-bar">
-      <nav id="nav"></nav>
-    </div>
-    
-
 
     <!-- put your code here!! :) -->
 
-    <!-- this is a placeholder image -->
-    <img src="https://i.pinimg.com/originals/0c/c7/24/0cc7242776655d06a2c515db598a9ac2.jpg" alt="img placeholder">
-    <!-- place holder ends here  -->
-
     
+        <!-- Camera -->
+        <main id="camera">
+            <!-- Camera sensor -->
+            <canvas id="camera--sensor"></canvas>
+            <!-- Camera view -->
+            <video id="camera--view" autoplay playsinline></video>
+            <!-- Camera output -->
+            <img src="//:0" alt="" id="camera--output">
+            <!-- Camera trigger -->
+            <button id="camera--trigger">O</button>
+        </main>
+
+
+        <div class="cell nav-bar">
+            <nav id="nav"></nav>
+          </div>
 
     <div class="cell footer">
       <nav id="foot"></nav>
     </div>
 
+    
   </div>
 
 
   <!-- Our JavaScript files -->
   <script src="../scripts/inject_templates.js"></script>
+  <script src="../scripts/camera.js"></script>
 
 </body>
 
 </html>
+
+
+
+
+
