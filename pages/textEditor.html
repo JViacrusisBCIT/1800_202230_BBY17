@@ -51,13 +51,14 @@
     <!-- put your code here!! :) -->
     <!--Where the Editor is going live-->
     <!--parent div element, in which quill editor should fit-->
-    <div id="parent" style="width:50%;height:70%;border:2px solid rgb(2, 3, 2)">
+    <div id="parent">
        
       <!--Quill Editor Div-->
-      <div id="editor"></div>
+      <div id="editor" placeholder="Enter Text"></div>
+      
    
       <div class="row">
-        <button class="btn btn-primary" type="submit">Save</button>
+        <button type="submit">Save</button>
       </div>
     </div>
     
@@ -71,6 +72,7 @@
 
   <!-- Our JavaScript files -->
   <script src="./scripts/textEditor.js"></script>
+  <script>var quill = new Quill('#editor', {theme: 'snow'});</script>
 
 </body>
 
