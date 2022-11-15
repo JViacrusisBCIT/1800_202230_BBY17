@@ -11,15 +11,12 @@
 
   <!-- Our Stylesheets -->  
   <link rel="stylesheet" href="../styles/style.css">
-  <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
 
   <!-- Our Javascript Files -->
   <!-- put scripts here--> 
+  
 
   <!-- Bootstrap Library CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -48,29 +45,30 @@
 
 
     <!-- put your code here!! :) -->
-    <h2 class="mt-4 text-light">Transcript</h2>
-    <div class="p-3" style="border: 1px solid gray; height: 300px; border-radius: 8px;">
-      <span id="final" class="text-light"></span>
-      <span id="interim" class="text-secondary"></span>
+    <div>
+      <button id="speak">Type to Speak</button>
+      <p id="textarea"></p>
     </div>
-    <div class="mt-4">
-      <button class="btn btn-success" id="start">Start</button>
-      <button class="btn btn-danger" id="stop">Stop</button>
-      <p id="status" class="lead mt-3 text-light" style="display: none">Listenting ...</p>
-    </div>
-    
+      
+        
+       
+        
 
-    <div class="cell footer">
-      <nav id="foot"></nav>
+        <div class="cell footer">
+          <nav id="foot"></nav>
+        </div>
+      
     </div>
-
   </div>
 
 
   <!-- Our JavaScript files -->
-  <script src="../scripts/inject_templates.js"></script>
-  <script src="../speech.js"></script>
-
+  <script src="/scripts/inject_templates.js"></script>
+  <script src="/scripts/speechRecognition.js"></script>
+  <script src="../p5.speech.js"></script>
+  
 </body>
+
+
 
 </html>
