@@ -17,7 +17,8 @@ showUploadedPicture();
 
 
 
-
+//Reading the URL to display pictures
+//This example is for profile pictures - I need to discuss this with Carly
 function uploadUserProfilePic() {
   // Let's assume my storage is only enabled for authenticated users 
   // This is set in your firebase console storage "rules" tab
