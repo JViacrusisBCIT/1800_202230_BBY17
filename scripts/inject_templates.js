@@ -39,9 +39,9 @@ function handleTouchMove(evt) {//this function is actually telling it what to do
                                                                          
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
-            history.back();
+            history.forward();//left swipe
         } else {
-            history.back();
+            history.back(); //right swipe
         }                       
     } else {
         if ( yDiff > 0 ) {
