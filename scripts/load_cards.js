@@ -86,7 +86,7 @@ function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
 // Injects a card for each student in the database
 function loadStudents() {
 
-    db.collection("temp-students").get()
+    db.collection("students").get()
         .then(students => {
 
             let i = 0;
@@ -96,9 +96,12 @@ function loadStudents() {
             // For each student, display a card with a unique ID and their full name in the footer.
             students.forEach(std => {
 
-                let firstName = std.data().firstname.charAt(0).toUpperCase() + std.data().firstname.slice(1);
-                let lastName = std.data().lastname.charAt(0).toUpperCase() + std.data().lastname.slice(1);
-                let fullName = firstName + " " + lastName;
+                let fullName = "";
+                const name = std.data().name.split(" ");
+                
+                name.forEach(n => {
+                    fullName += n.charAt(0).toUpperCase() + n.slice(1) + " ";
+                });
 
                 let card = displayCard(i, fullName, "user.svg", "");
 
@@ -114,7 +117,7 @@ function loadStudents() {
 // Injects a card for each classroom in the database
 function loadClassrooms() {
 
-    db.collection("temp-classrooms").get()
+    db.collection("classes").get()
         .then(classrooms => {
 
             let i = 0;
@@ -137,7 +140,7 @@ function loadClassrooms() {
 // Injects a card for each file the student has
 function loadFiles() {
 
-    db.collection("temp-files").get()
+    db.collection("files").get()
         .then(files => {
 
             let i = 0;
