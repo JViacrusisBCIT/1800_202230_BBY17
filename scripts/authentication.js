@@ -1,7 +1,20 @@
+function makeid(length) {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  var idlen = 20;
+  for ( var i = 0; i < idlen; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+
 console.log("starting auth process.");
 
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
 
 var uiConfig = {
   callbacks: {
@@ -19,11 +32,10 @@ var uiConfig = {
       //------------------------------------------------------------------------------------------
       var user = authResult.user;                            // get the user object from the Firebase authentication database
       if (authResult.additionalUserInfo.isNewUser) {         //if new user
-        db.collection("users").doc(user.uid).set({         //write to firestore. We are using the UID for the ID in users collection
+        db.collection("teachers").doc(user.uid).set({         //write to firestore. We are using the UID for the ID in users collection
           name: user.displayName,                    //"users" collection
           email: user.email,                         //with authenticated user's ID (user.uid)
-          country: "Canada",                      //optional default profile info      
-          school: "BCIT"                          //optional default profile info
+          teacherid: makeid(),                      //optional default profile info                                //optional default profile info
         }).then(function () {
           console.log("New user added to firestore");
           window.location.assign("main.html");       //re-direct to main.html after signup

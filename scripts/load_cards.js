@@ -1,11 +1,19 @@
 // Locates the div container that holds the gallery
 var gallery = document.getElementById('gallery');
 
+
+// The header that describes the visual cards
+var visualHeader;
+
 // The container for the visual cards
 var visualCards;
 
+// The header that describes the non visual cards
+var nonVisualHeader;
+
 // The container for the non-visual cards
 var nonVisualCards;
+
 
 // Locates the template for the cards
 var cardTemplate = document.getElementById("cardTemplate");
@@ -39,7 +47,7 @@ function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
     if (visualHeaderDesc.length != 0) {
 
         // Inserts a header label above the visual cards
-        let visualHeader = document.createElement("h3");
+        visualHeader = document.createElement("h3");
         visualHeader.innerHTML = visualHeaderDesc;
         visualHeader.id = "visual-header";
         visualHeader.className = "cards-header";
@@ -61,7 +69,7 @@ function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
     if (nonVisualHeaderDesc.length != 0) {
 
         // Inserts a header label above the non visual cards
-        let nonVisualHeader = document.createElement("h3");
+        nonVisualHeader = document.createElement("h3");
         nonVisualHeader.innerHTML = nonVisualHeaderDesc;
         nonVisualHeader.id = "non-visual-header";
         nonVisualHeader.className = "cards-header";
@@ -86,7 +94,7 @@ function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
 // Injects a card for each student in the database
 function loadStudents() {
 
-    db.collection("temp-students").get()
+    db.collection("students").get()
         .then(students => {
 
             let i = 0;
@@ -96,9 +104,12 @@ function loadStudents() {
             // For each student, display a card with a unique ID and their full name in the footer.
             students.forEach(std => {
 
-                let firstName = std.data().firstname.charAt(0).toUpperCase() + std.data().firstname.slice(1);
-                let lastName = std.data().lastname.charAt(0).toUpperCase() + std.data().lastname.slice(1);
-                let fullName = firstName + " " + lastName;
+                let fullName = "";
+                const name = std.data().name.split(" ");
+                
+                name.forEach(n => {
+                    fullName += n.charAt(0).toUpperCase() + n.slice(1) + " ";
+                });
 
                 let card = displayCard(i, fullName, "user.svg", "");
 
@@ -114,7 +125,7 @@ function loadStudents() {
 // Injects a card for each classroom in the database
 function loadClassrooms() {
 
-    db.collection("temp-classrooms").get()
+    db.collection("classes").get()
         .then(classrooms => {
 
             let i = 0;
@@ -124,7 +135,7 @@ function loadClassrooms() {
             // For each classroom, display a card with a unique ID and the class name in the footer.
             classrooms.forEach(clsrm => {
 
-                let card = displayCard(i, "Classroom " + clsrm.data().homeroomid, "user.svg", "");
+                let card = displayCard(i, "Classroom " + clsrm.data().classid, "user.svg", "");
 
                 i++;
 
@@ -134,10 +145,11 @@ function loadClassrooms() {
 
 }
 
+
 // Injects a card for each file the student has
 function loadFiles() {
 
-    db.collection("temp-files").get()
+    db.collection("files").get()
         .then(files => {
 
             let i = 0;
@@ -162,6 +174,19 @@ function loadFiles() {
                 i++;
 
             })
+
+            // if db doesn't fill a section with cards, remove that section
+            if (!visualCards.hasChildNodes()) {
+
+                visualHeader.remove();
+                nonVisualHeader.remove();
+
+            } else if (!nonVisualCards.hasChildNodes()) {
+
+                nonVisualHeader.remove();
+                nonVisualCards.remove();
+
+            }
 
         });
 
