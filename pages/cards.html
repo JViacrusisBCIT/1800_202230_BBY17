@@ -62,7 +62,9 @@
       <nav id="nav"></nav>
     </div>
 
-    <div id="gallery" class="gallery"></div>
+    <div class="gallery">
+      <div id="gallery" class="row row-cols-1 row-cols-md-4 g-4"></div>
+    </div>
 
     <div class="cell footer">
       <nav id="foot"></nav>
@@ -73,11 +75,6 @@
   <script src="../scripts/firebaseAPI.js"></script>
   <script src="../scripts/inject_templates.js"></script>
   <script src="../scripts/load_cards.js"></script>
-
-  <script>
-    // calls the loadStudents function from only this page
-    loadStudents();
-  </script>
 
 </body>
 
