@@ -109,3 +109,27 @@ function loadStudents() {
         });
 
 }
+
+
+// Injects a card for each classroom in the database
+function loadClassrooms() {
+
+    db.collection("temp-classrooms").get()
+        .then(classrooms => {
+
+            let i = 0;
+
+            setupGallery(6, "", "Classrooms");
+
+            // For each classroom, display a card with a unique ID and the class name in the footer.
+            classrooms.forEach(clsrm => {
+
+                let card = displayCard(i, "Classroom " + clsrm.data().homeroomid, "user.svg", "");
+
+                i++;
+
+            })
+
+        });
+
+}

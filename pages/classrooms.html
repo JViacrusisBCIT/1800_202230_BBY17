@@ -10,7 +10,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Our Stylesheets -->  
-  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/cards-style.css">
+
+  <!-------------------------------------------------------->
+  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+  <!-------------------------------------------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
   <!-- Our Javascript Files -->
   <!-- put scripts here--> 
@@ -32,18 +42,27 @@
 
 
 <body>
+
+  <!-- Template for all the cards -->
+  <template id="cardTemplate">
+    <div class="col">
+      <div class="card h-100">
+        <img src="../images/drink1.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <img src="../images/image.jpg" class="card-logo" />
+          <h5 class="card-title">Card title</h5>
+        </div>
+      </div>
+    </div>
+  </template>
   
   <div class="container">
 
     <div class="cell nav-bar">
       <nav id="nav"></nav>
     </div>
-    
-
-
-    <!-- put your code here!! :) -->
-
-    
+  
+    <div id="gallery" class="gallery"></div>  
 
     <div class="cell footer">
       <nav id="foot"></nav>
@@ -53,7 +72,14 @@
 
 
   <!-- Our JavaScript files -->
+  <script src="../scripts/firebaseAPI.js"></script>
   <script src="../scripts/inject_templates.js"></script>
+  <script src="../scripts/load_cards.js"></script>
+
+  <script>
+    // calls the loadClassrooms function from only this page
+    loadClassrooms();
+  </script>
 
 </body>
 
