@@ -1,6 +1,9 @@
 // Locates the div container that holds the gallery
 var gallery = document.getElementById('gallery');
 
+// Locates the template for the cards
+var cardTemplate = document.getElementById("cardTemplate");
+
 
 // The header that describes the visual cards
 var visualHeader;
@@ -14,9 +17,6 @@ var nonVisualHeader;
 // The container for the non-visual cards
 var nonVisualCards;
 
-
-// Locates the template for the cards
-var cardTemplate = document.getElementById("cardTemplate");
 
 
 // Injects a single card into the gallery
@@ -42,6 +42,7 @@ function displayCard(idIndex, redirectPath, cardTitle, filePath, thumbnailPath) 
     return newCard;
 
 }
+
 
 // Sets up the gallery before displaying the cards
 function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
@@ -93,10 +94,45 @@ function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
 }
 
 
+// Injects a card for each classroom in the database
+function loadClassrooms() {
+
+    let teacherID = "XyqAS0lwHQX5Uz9IUYN6";
+
+    db.collection("classes")
+    .where("teacherid", "==", teacherID)
+    .get()
+        .then(classrooms => {
+
+            let i = 0;
+
+            setupGallery(6, "", "Classrooms");
+
+            // For each classroom, display a card with a unique ID and the class name in the footer.
+            classrooms.forEach(clsrm => {
+
+                let redirectPath = "students.html?classid=" + clsrm.data().classid;
+
+                let card = displayCard(i, redirectPath, clsrm.data().name, "user.svg", "");
+
+                i++;
+
+            })
+
+        });
+
+}
+
+
 // Injects a card for each student in the database
 function loadStudents() {
 
-    db.collection("students").get()
+    let params = new URL(window.location.href);
+    let classID = params.searchParams.get("classid");
+
+    db.collection("students")
+    .where("classid", "==", classID)
+    .get()
         .then(students => {
 
             let i = 0;
@@ -126,36 +162,15 @@ function loadStudents() {
 }
 
 
-// Injects a card for each classroom in the database
-function loadClassrooms() {
-
-    db.collection("classes").get()
-        .then(classrooms => {
-
-            let i = 0;
-
-            setupGallery(6, "", "Classrooms");
-
-            // For each classroom, display a card with a unique ID and the class name in the footer.
-            classrooms.forEach(clsrm => {
-
-                let redirectPath = "students.html?classroomid=" + clsrm.data().classid;
-
-                let card = displayCard(i, redirectPath, "Classroom " + i, "user.svg", "");
-
-                i++;
-
-            })
-
-        });
-
-}
-
-
 // Injects a card for each file the student has
 function loadFiles() {
 
-    db.collection("files").get()
+    let params = new URL(window.location.href);
+    let studentID = params.searchParams.get("studentid");
+
+    db.collection("files")
+    .where("studentid", "==", studentID)
+    .get()
         .then(files => {
 
             let i = 0;
