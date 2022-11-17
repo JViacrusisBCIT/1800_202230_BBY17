@@ -1,11 +1,19 @@
 // Locates the div container that holds the gallery
 var gallery = document.getElementById('gallery');
 
+
+// The header that describes the visual cards
+var visualHeader;
+
 // The container for the visual cards
 var visualCards;
 
+// The header that describes the non visual cards
+var nonVisualHeader;
+
 // The container for the non-visual cards
 var nonVisualCards;
+
 
 // Locates the template for the cards
 var cardTemplate = document.getElementById("cardTemplate");
@@ -39,7 +47,7 @@ function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
     if (visualHeaderDesc.length != 0) {
 
         // Inserts a header label above the visual cards
-        let visualHeader = document.createElement("h3");
+        visualHeader = document.createElement("h3");
         visualHeader.innerHTML = visualHeaderDesc;
         visualHeader.id = "visual-header";
         visualHeader.className = "cards-header";
@@ -61,7 +69,7 @@ function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
     if (nonVisualHeaderDesc.length != 0) {
 
         // Inserts a header label above the non visual cards
-        let nonVisualHeader = document.createElement("h3");
+        nonVisualHeader = document.createElement("h3");
         nonVisualHeader.innerHTML = nonVisualHeaderDesc;
         nonVisualHeader.id = "non-visual-header";
         nonVisualHeader.className = "cards-header";
@@ -127,7 +135,7 @@ function loadClassrooms() {
             // For each classroom, display a card with a unique ID and the class name in the footer.
             classrooms.forEach(clsrm => {
 
-                let card = displayCard(i, "Classroom " + clsrm.data().homeroomid, "user.svg", "");
+                let card = displayCard(i, "Classroom " + clsrm.data().classid, "user.svg", "");
 
                 i++;
 
@@ -136,6 +144,7 @@ function loadClassrooms() {
         });
 
 }
+
 
 // Injects a card for each file the student has
 function loadFiles() {
@@ -165,6 +174,19 @@ function loadFiles() {
                 i++;
 
             })
+
+            // if db doesn't fill a section with cards, remove that section
+            if (!visualCards.hasChildNodes()) {
+
+                visualHeader.remove();
+                nonVisualHeader.remove();
+
+            } else if (!nonVisualCards.hasChildNodes()) {
+
+                nonVisualHeader.remove();
+                nonVisualCards.remove();
+
+            }
 
         });
 
