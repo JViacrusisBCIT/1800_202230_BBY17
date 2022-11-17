@@ -133,3 +133,36 @@ function loadClassrooms() {
         });
 
 }
+
+// Injects a card for each file the student has
+function loadFiles() {
+
+    db.collection("temp-files").get()
+        .then(files => {
+
+            let i = 0;
+
+            setupGallery(6, "Media Files", "Documents");
+
+            // For each file the student has, display a card with a unique ID and the file name in the footer.
+            files.forEach(file => {
+
+                let card;
+
+                if (file.data().isvisual) {
+
+                    card = displayCard(i, file.data().filename, "user.svg", "drink1.png");
+
+                } else {
+
+                    card = displayCard(i, file.data().filename, "user.svg", "");
+
+                }                
+
+                i++;
+
+            })
+
+        });
+
+}
