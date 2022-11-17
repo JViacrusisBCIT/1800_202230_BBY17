@@ -65,13 +65,17 @@ body {
   margin: 4% 0 3% 0;
 }
 
-.card-body {
-  background-color: rgb(234, 234, 234);
+.card:hover {
+	background: rgb(234, 234, 234);
+}
+
+.col a, .col a:hover {
+  color: inherit;
+  text-decoration: inherit;
 }
 
 .card-img-top {
   aspect-ratio: 1 / 1;
-  padding: 5%;
 }
 
 .card-logo {
@@ -83,6 +87,8 @@ body {
 .card-title {
   display: inline;
 }
+
+
 
 /*/////////////////////////////
 ///////////////////////////////
