@@ -119,6 +119,3 @@ function loadStudents() {
         });
 
 }
-
-// Calls the inject_navfoot function
-loadStudents();
