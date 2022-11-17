@@ -91,7 +91,7 @@ function loadStudents() {
 
             let i = 0;
 
-            setupGallery(6, "Students", "skdfl");
+            setupGallery(6, "", "Students");
 
             // For each student, display a card with a unique ID and their full name in the footer.
             students.forEach(std => {
@@ -100,19 +100,9 @@ function loadStudents() {
                 let lastName = std.data().lastname.charAt(0).toUpperCase() + std.data().lastname.slice(1);
                 let fullName = firstName + " " + lastName;
 
-                let card = displayCard(i, fullName, "user.svg", "drink2.png");
+                let card = displayCard(i, fullName, "user.svg", "");
 
                 i++;
-
-            })
-
-            i = 0;
-
-            // For each student, display a card with a unique ID and their full name in the footer.
-            students.forEach(std => {
-
-                let umName = std.data().lastname + " " + std.data().firstname;
-                let card = displayCard(1, umName, "user.svg", "");
 
             })
 
