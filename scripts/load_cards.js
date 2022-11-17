@@ -20,13 +20,15 @@ var cardTemplate = document.getElementById("cardTemplate");
 
 
 // Injects a single card into the gallery
-function displayCard(idIndex, cardTitle, filePath, thumbnailPath) {
+function displayCard(idIndex, redirectPath, cardTitle, filePath, thumbnailPath) {
 
     let newCard = cardTemplate.content.cloneNode(true);
     newCard.id = "card" + idIndex;
 
     newCard.querySelector('.card-title').innerHTML = cardTitle;
     newCard.querySelector('.card-logo').src = `../images/${filePath}`;
+
+    newCard.querySelector('.redirect').href = redirectPath;
 
 
     if (thumbnailPath.length != 0) {
@@ -111,7 +113,9 @@ function loadStudents() {
                     fullName += n.charAt(0).toUpperCase() + n.slice(1) + " ";
                 });
 
-                let card = displayCard(i, fullName, "user.svg", "");
+                let redirectPath = "files.html?studentid=" + std.data().studentid;
+
+                let card = displayCard(i, redirectPath, fullName, "user.svg", "");
 
                 i++;
 
@@ -135,7 +139,9 @@ function loadClassrooms() {
             // For each classroom, display a card with a unique ID and the class name in the footer.
             classrooms.forEach(clsrm => {
 
-                let card = displayCard(i, "Classroom " + clsrm.data().classid, "user.svg", "");
+                let redirectPath = "students.html?classroomid=" + clsrm.data().classid;
+
+                let card = displayCard(i, redirectPath, "Classroom " + i, "user.svg", "");
 
                 i++;
 
@@ -161,13 +167,15 @@ function loadFiles() {
 
                 let card;
 
+                let redirectPath = "textEditor.html?fileid=" + file.data().fileid;
+
                 if (file.data().isvisual) {
 
-                    card = displayCard(i, file.data().filename, "user.svg", "drink1.png");
+                    card = displayCard(i, redirectPath, file.data().filename, "user.svg", "drink1.png");
 
                 } else {
 
-                    card = displayCard(i, file.data().filename, "user.svg", "");
+                    card = displayCard(i, redirectPath, file.data().filename, "user.svg", "");
 
                 }                
 
