@@ -202,9 +202,11 @@ function loadFiles() {
             if (!visualCards.hasChildNodes()) {
 
                 visualHeader.remove();
-                nonVisualHeader.remove();
+                visualHeader.remove();
 
-            } else if (!nonVisualCards.hasChildNodes()) {
+            }
+            
+            if (!nonVisualCards.hasChildNodes()) {
 
                 nonVisualHeader.remove();
                 nonVisualCards.remove();
