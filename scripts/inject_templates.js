@@ -40,17 +40,19 @@ function handleTouchMove(evt) {//this function is actually telling it what to do
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
             history.forward();//left swipe
+            // $('.container').toggleClass('show');//dont mess with this
         } else {
             history.back(); //right swipe
+            // $('.container').toggleClass('show');//dont mess with this either
         }                       
     } else {
         if ( yDiff > 0 ) {
-            /* down swipe */ 
+            //  down swipe  
         } else { 
-            /* up swipe */
+            // up swipe 
         }                                                                 
     }
-    /* reset values */
+    // reset values 
     xDown = null;
     yDown = null;                                             
 };
