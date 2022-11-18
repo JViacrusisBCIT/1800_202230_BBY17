@@ -53,13 +53,13 @@
       <nav id="nav"></nav>
     </div>
     
-    <div class="cell welcome-banner">
+    <div class="cell welcome-banner" id="welcome-banner">
       <div class="jumbotron">
           <h1 class="display-3">Thank you!</h1>
           <p>We're glad you chose iinsight.</p>
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Start tutorial</a></p>
-          <p><a class="btn btn-secondary btn-lg" href="#" role="button">Skip</a></p>
-          <img id="welcome-banner-close-button" src="../images/x-svgrepo-com.svg" class="btn btn-light" type="submit">
+          <p><a class="btn btn-secondary btn-lg" href="#" role="button" onclick="hideDiv('welcome-banner')">Skip</a></p>
+          <img id="welcome-banner-close-button" src="../images/x-svgrepo-com.svg" class="btn btn-light" type="submit" onclick="hideDiv('welcome-banner')">
           <!-- <div class="eyebox">
             <div class="eyes"></div>
             <div class="eyes"></div>
@@ -99,7 +99,7 @@
 
   <!-- Our Javascript Files -->
   <script src="../scripts/inject_templates.js"></script>
-  <script src="../scripts/eyeball.js"></script>
+  <!-- <script src="../scripts/eyeball.js"></script> -->
 
 </body>
 
