@@ -97,29 +97,47 @@ function setupGallery(columns, visualHeaderDesc, nonVisualHeaderDesc) {
 // Injects a card for each classroom in the database
 function loadClassrooms() {
 
-    let teacherID = "XyqAS0lwHQX5Uz9IUYN6";
+    firebase.auth().onAuthStateChanged(user => {
+        
+        if (user) {
 
-    db.collection("classes")
-    .where("teacherid", "==", teacherID)
-    .get()
-        .then(classrooms => {
+            var teacherID;
 
-            let i = 0;
+            db.collection("teachers").doc(user.uid)
+            .get()
+                .then(teacher => {
 
-            setupGallery(6, "", "Classrooms");
+                    teacherID = teacher.data().teacherid;
+                    console.log("user logged in: " + teacher.data().name);
 
-            // For each classroom, display a card with a unique ID and the class name in the footer.
-            classrooms.forEach(clsrm => {
+                    db.collection("classes")
+                    .where("teacherid", "==", teacherID)
+                    .get()
+                        .then(classrooms => {
 
-                let redirectPath = "students.html?classid=" + clsrm.data().classid;
+                            let i = 0;
 
-                let card = displayCard(i, redirectPath, clsrm.data().name, "user.svg", "");
+                            setupGallery(6, "", "Classrooms");
 
-                i++;
+                            // For each classroom, display a card with a unique ID and the class name in the footer.
+                            classrooms.forEach(clsrm => {
 
-            })
+                                let redirectPath = "students.html?classid=" + clsrm.data().classid;
 
-        });
+                            let card = displayCard(i, redirectPath, clsrm.data().name, "user.svg", "");
+
+                            i++;
+                        
+                        })
+
+                });
+
+            });
+
+        }
+
+    });
+
 }
 
 
