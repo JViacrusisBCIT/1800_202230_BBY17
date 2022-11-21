@@ -1,7 +1,8 @@
 var newClassroomModal = document.getElementById('new-classroom-modal')
+var bsNewClassroomModal = new bootstrap.Modal(document.getElementById('new-classroom-modal'), {
+  keyboard: false
+})
 var confirmCreateButton = document.getElementById('confirm-create-button')
-
-
 newClassroomModal.addEventListener('show.bs.modal', function (event) {
   console.log("modal toggled");
   let modalTitle = newClassroomModal.querySelector('.modal-title');
@@ -15,6 +16,8 @@ confirmCreateButton.addEventListener('click', function (event) {
       console.log("user found");
 
       let className = document.getElementById('class-name').value;
+      document.getElementById('class-name').value = "";
+      bsNewClassroomModal.hide();
       console.log(user.uid);
       db.collection("teachers").doc(user.uid).get()
         .then(function (doc) {

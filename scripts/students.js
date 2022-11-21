@@ -3,6 +3,9 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 });
 
 var newStudentModal = document.getElementById('new-student-modal')
+var bsNewStudentModal = new bootstrap.Modal(document.getElementById('new-student-modal'), {
+    keyboard: false
+  })
 var confirmCreateButton = document.getElementById('confirm-create-button')
 
 
@@ -19,6 +22,8 @@ confirmCreateButton.addEventListener('click', function (event) {
             console.log("user found");
 
             let studentName = document.getElementById('student-name').value;
+            document.getElementById('student-name').value = "";
+            bsNewStudentModal.hide();
             console.log(user.uid);
             db.collection("teachers").doc(user.uid).get()
                 .then(function (doc) {
