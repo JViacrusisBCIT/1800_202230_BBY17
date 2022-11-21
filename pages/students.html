@@ -58,6 +58,34 @@
         </a>
       </div>
   </template>
+
+    <!-- Modal hidden until "add new" button is pressed -->
+    <button type="button" id="add-new-student-button" data-bs-toggle="modal" data-bs-target="#new-student-modal" class="btn btn-light btn-square-md">
+      <img id="add-new-student-icon" src="../images/plus-sign.svg" class="btn" type="submit">
+    </button>
+  
+    <div class="modal fade" id="new-student-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Placeholder</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Student Name</label>
+                <input type="text" class="form-control" id="student-name">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button id="confirm-create-button" type="button" class="btn btn-primary">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
     
   <div class="container">
 
@@ -66,10 +94,6 @@
     </div>
     
     <div id="gallery" class="gallery"></div>
-
-    <button type="button" id="add-new-student-button" class="btn btn-light btn-square-md" onclick="location.href=''">
-      <img id="add-new-student-icon" src="../images/plus-sign.svg" class="btn" type="submit">
-    </button>
 
     <div class="cell footer">
       <nav id="foot"></nav>
@@ -82,6 +106,7 @@
   <script src="../scripts/firebaseAPI.js"></script>
   <script src="../scripts/inject_templates.js"></script>
   <script src="../scripts/load_cards.js"></script>
+  <script src="../scripts/students.js"></script>
 
   <script>
     // calls the loadStudents function from only this page

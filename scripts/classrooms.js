@@ -1,10 +1,10 @@
-var newClassroommodal = document.getElementById('new-classroom-modal')
+var newClassroomModal = document.getElementById('new-classroom-modal')
 var confirmCreateButton = document.getElementById('confirm-create-button')
 
 
-newClassroommodal.addEventListener('show.bs.modal', function (event) {
+newClassroomModal.addEventListener('show.bs.modal', function (event) {
   console.log("modal toggled");
-  let modalTitle = newClassroommodal.querySelector('.modal-title');
+  let modalTitle = newClassroomModal.querySelector('.modal-title');
   modalTitle.textContent = 'New Classroom';
 })
 
