@@ -99,10 +99,13 @@ function loadClassrooms() {
 
     firebase.auth().onAuthStateChanged(user => {
         
+        // If a user is logged in...
         if (user) {
 
-            var teacherID;
+            var teacherID = db.collection("teachers").doc(user.uid);
+            var numOfCards = 0;
 
+            // Loads in the cards when the user first initializes the page
             db.collection("teachers").doc(user.uid)
             .get()
                 .then(teacher => {
@@ -114,25 +117,56 @@ function loadClassrooms() {
                     .where("teacherid", "==", teacherID)
                     .get()
                         .then(classrooms => {
-
-                            let i = 0;
-
                             setupGallery(6, "", "Classrooms");
 
                             // For each classroom, display a card with a unique ID and the class name in the footer.
-                            classrooms.forEach(clsrm => {
+                            classrooms.forEach(classroom => {
 
-                                let redirectPath = "students.html?classid=" + clsrm.data().classid;
+                                let redirectPath = "students.html?classid=" + classroom.data().classid;
 
-                            let card = displayCard(i, redirectPath, clsrm.data().name, "user.svg", "");
+                                displayCard(numOfCards, redirectPath, classroom.data().name, "user.svg", "");
 
-                            i++;
+                                numOfCards++;
                         
-                        })
+                            })
+
+                        })  
 
                 });
 
-            });
+            // Immediately loads a new card when a user writes a classroom to the database
+            db.collection("classes")
+                .onSnapshot(classrooms => { 
+
+                    db.collection("classes").where("teacherid", "==", teacherID).orderBy("timestamp")
+                    .get()
+                        .then(classrooms => {
+                            
+                            if ( !classrooms.metadata.hasPendingWrites ) {
+
+                                let alreadyCreated = 0;
+
+                                classrooms.forEach(classroom => {
+
+                                    let redirectPath = "students.html?classid=" + classroom.data().classid;
+                                    
+                                    if (numOfCards <= alreadyCreated) {
+
+                                        displayCard(numOfCards, redirectPath, classroom.data().name, "user.svg", "");
+                                        numOfCards++;
+
+                                    }
+                                    
+                                    alreadyCreated++;
+            
+                                })   
+
+                            }
+                             
+
+                        });
+
+                })  
 
         }
 
@@ -147,12 +181,13 @@ function loadStudents() {
     let params = new URL(window.location.href);
     let classID = params.searchParams.get("classid");
 
+    var numOfCards = 0;
+
+    // Loads in the cards when the user first initializes the page
     db.collection("students")
     .where("classid", "==", classID)
     .get()
         .then(students => {
-
-            let i = 0;
 
             setupGallery(6, "", "Students");
 
@@ -168,13 +203,47 @@ function loadStudents() {
 
                 let redirectPath = "files.html?studentid=" + std.data().studentid;
 
-                let card = displayCard(i, redirectPath, fullName, "user.svg", "");
+                let card = displayCard(numOfCards, redirectPath, fullName, "user.svg", "");
 
-                i++;
+                numOfCards++;
 
             })
 
         });
+
+    // Immediately loads a new card when a user writes a student to the database
+    db.collection("students")
+    .onSnapshot(students => { 
+
+        db.collection("students").where("classid", "==", classID).orderBy("timestamp")
+        .get()
+            .then(students => {
+                
+                if ( !students.metadata.hasPendingWrites ) {
+
+                    let alreadyCreated = 0;
+
+                    students.forEach(std => {
+
+                        let redirectPath = "students.html?classid=" + std.data().classid;
+                        
+                        if (numOfCards <= alreadyCreated) {
+
+                            displayCard(numOfCards, redirectPath, std.data().name, "user.svg", "");
+                            numOfCards++;
+
+                        }
+                        
+                        alreadyCreated++;
+
+                    })   
+
+                }
+                 
+
+            });
+
+    })  
 
 }
 

@@ -39,7 +39,8 @@ confirmCreateButton.addEventListener('click', function (event) {
                         name: studentName,
                         studentid: makeid(),
                         teacherid: teacherID,
-                        classid: params.classid
+                        classid: params.classid,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     }).then(function () {
                         console.log("New student added to firestore");
                     })
