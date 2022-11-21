@@ -138,6 +138,13 @@ body {
   top: 100%;
 }
 
+
+
+#add-new-classroom-button {
+  position: absolute;
+  bottom: 50vw - 50%;
+  top: 50vh - 50%;
+}
 /*................................................
 .container {
   position: absolute;
@@ -190,4 +197,3 @@ body {
   }
 
 
-  
