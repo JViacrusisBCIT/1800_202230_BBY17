@@ -11,11 +11,22 @@ var quill = new Quill('#editor', {
 
 function loadText() {
 
-  // JSON
-  let json = "text";
+ db.collection("files")
+  .where("fileid", "==", fileID)
+  .get()
+  .then(files => {
 
-  // Converts to Delta Object
-  delta = JSON.parse(json);
+    files.forEach(file => {
+
+      let json = file.data().content;
+
+      delta = JSON.parse(json);
+
+      quill.setContents(delta);
+
+    });
+
+  });
 
 }
 
@@ -47,4 +58,3 @@ function saveText() {
 }
 
 
-//loadText();
