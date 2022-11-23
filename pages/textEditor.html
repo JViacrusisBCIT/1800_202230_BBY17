@@ -13,6 +13,16 @@
   <link rel="stylesheet" href="../styles/style.css">
   <link rel="stylesheet" href="//cdn.quilljs.com/1.3.6/quill.bubble.css">
   
+  <!-------------------------------------------------------->
+  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+  <!-------------------------------------------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+
   
   <!-- Our Javascript Files -->
   <!-- put scripts here--> 
@@ -58,7 +68,7 @@
       
    
       <div class="row">
-        <button type="submit">Save</button>
+        <button id="submit" type="submit" onclick="saveText()">Save</button>
       </div>
 
       <button type="button" class="btn btn-dark" onclick="location.href='classrooms.html';">Next</button>
@@ -74,6 +84,7 @@
 
 
   <!-- Our JavaScript files -->
+  <script src="../scripts/firebaseAPI.js"></script>
   <script src="../scripts/inject_templates.js"></script>
   <script src="../scripts/textEditor.js"></script>
   
