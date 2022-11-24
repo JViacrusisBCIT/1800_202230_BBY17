@@ -6,6 +6,14 @@ var fileID = params.searchParams.get("fileid");
 
 // Creates a new quill object
 var quill = new Quill('#editor', {
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['image', 'code-block']
+    ]
+  },
+  placeholder: 'Add some text and images...',
   theme: 'snow'
 });
 
