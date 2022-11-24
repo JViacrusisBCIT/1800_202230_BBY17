@@ -1,14 +1,16 @@
 
+// Get the file ID from the URL
 var params = new URL(window.location.href);
 var fileID = params.searchParams.get("fileid");
 
 
+// Creates a new quill object
 var quill = new Quill('#editor', {
   theme: 'snow'
 });
 
 
-
+// Takes the JSON of content in the database and displays it in quill.
 function loadText() {
 
  db.collection("files")
@@ -18,10 +20,13 @@ function loadText() {
 
     files.forEach(file => {
 
+      // Reads the JSON from the database
       let json = file.data().content;
 
+      // Converts to the Delta object
       delta = JSON.parse(json);
 
+      // Puts those contents into quill
       quill.setContents(delta);
 
     });
@@ -57,4 +62,4 @@ function saveText() {
 
 }
 
-
+loadText();
