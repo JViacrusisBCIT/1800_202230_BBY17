@@ -44,14 +44,17 @@ function populateInfo ()
 }
 
 function editUserInfo() {
+    
     //Enable the form fields
     document.getElementById('personalInfoFields').disabled = false;
  }
 
  function saveUserInfo() {
+    app.auth().onAuthStateChanged( user =>{
     userName = document.getElementById('nameInput').value;
     userEmail = document.getElementById('emailInput').value;
     //userCity = document.getElementById('cityInput').value;
+    var currentUser = db.collection( "teachers" ).doc( user.uid );
 
     currentUser.update({
         name: userName,
@@ -63,4 +66,4 @@ function editUserInfo() {
     })
 
     document.getElementById('personalInfoFields').disabled = true;
-}
+})}
