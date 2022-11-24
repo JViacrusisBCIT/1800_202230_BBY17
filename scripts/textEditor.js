@@ -78,7 +78,16 @@ function saveToDatabase(json) {
 // Loads the text from the session storage
 function loadFromSessionStorage() {
 
+  console.log("load from session storage");
 
+  // Reads the JSON from the session storage
+  let json = sessionStorage.getItem("documentContents");
+
+  // Converts to the Delta object
+  delta = JSON.parse(json);
+
+  // Puts those contents into quill
+  quill.setContents(delta);
 
 }
 
@@ -101,9 +110,10 @@ function saveToSessionStorage() {
 
 
 // Runs a different course of action depending on whether its a new or existing file.
-function determineExistence() {
+function determineExistence() { 
   
-  var actionButton = document.getElementById("submit");
+  var saveButton = document.getElementById("save");
+  var nextButton = document.getElementById("next");
 
   if (fileID) {
 
@@ -111,15 +121,17 @@ function determineExistence() {
 
     loadFromDatabase();
 
-    actionButton.addEventListener("click", saveToDatabase);
+    saveButton.addEventListener("click", saveToDatabase);
+    nextButton.remove();
 
   } else {
 
     console.log("new file.");
 
-    console.log(sessionStorage);
+    loadFromSessionStorage();
 
-    actionButton.addEventListener("click", saveToSessionStorage);
+    saveButton.remove();
+    nextButton.addEventListener("click", saveToSessionStorage);
 
   }
 
