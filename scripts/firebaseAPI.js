@@ -1,6 +1,8 @@
 //----------------------------------------
 //  Your web app's Firebase configuration
 //----------------------------------------
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyCwdmFMGBQ-v4KXMCDzh2EF_r9fIiyDzC0",
   authDomain: "iinsight-32b02.firebaseapp.com",

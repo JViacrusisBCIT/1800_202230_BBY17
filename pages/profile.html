@@ -11,11 +11,7 @@
 
   <!-- Our Stylesheets -->  
   <link rel="stylesheet" href="../styles/style.css">
-  <link rel="stylesheet" href="//cdn.quilljs.com/1.3.6/quill.bubble.css">
   
-  <!-------------------------------------------------------->
-  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-  <!-------------------------------------------------------->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -23,15 +19,9 @@
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-  
   <!-- Our Javascript Files -->
   <!-- put scripts here--> 
 
-  <!--Inclusion of Quill.js and Quill.js.snow.css to the HTML file:-->
-  <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet"> 
-  <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
-
-  
   <!-- Bootstrap Library CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
   rel="stylesheet"
@@ -44,6 +34,8 @@
 
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+
+  
 
 </head>
 
@@ -58,22 +50,31 @@
     
 
 
-    <!-- put your code here!! :) -->
-    <!--Where the Editor is going live-->
-    <!--parent div element, in which quill editor should fit-->
-    <div id="parent">
-       
-      <!--Quill Editor Div-->
-      <div id="editor" placeholder="Enter Text"></div>
-      
-   
-      <div class="row">
-        <button id="submit" type="submit">Save</button>
-      </div>
+    
+        <h1>User Profile</h1>
+        <form>
+            <fieldset class="mb-3" id="personalInfoFields" disabled>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>School</label>
+                    <input type="text" id="emailInput" class="form-control" placeholder="Enter your email">
+                </div>
+                <!-- <div class="form-group">
+                    <label>City</label>
+                    <input type="text" id="cityInput" class="form-control" placeholder="Enter your city">
+                </div> -->
+            </fieldset>
+            <div class="d-flex justify-content-end mt-5">
+                <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+                <span style="width: 10px"></span>
+                <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+            </div>
+        </form>
+    
 
-      <button type="button" class="btn btn-dark" onclick="location.href='classrooms.html';">Next</button>
-
-    </div>
     
 
     <div class="cell footer">
@@ -84,14 +85,16 @@
 
 
   <!-- Our JavaScript files -->
+  
   <script src="../scripts/firebaseAPI.js"></script>
   <script src="../scripts/inject_templates.js"></script>
-  <script src="../scripts/textEditor.js"></script>
+  <script src="../scripts/profile.js"></script>
+
+  <script>
+    populateInfo();
+  </script>
   
 
 </body>
 
 </html>
-
-
-  
