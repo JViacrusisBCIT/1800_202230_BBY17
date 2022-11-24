@@ -1,7 +1,10 @@
 
 // Get the file ID from the URL
 var params = new URL(window.location.href);
-var fileID = params.searchParams.get("fileid");
+
+if (params.searchParams.get("fileid"))
+  var fileID = params.searchParams.get("fileid");
+
 
 
 // Creates a new quill object
@@ -18,34 +21,35 @@ var quill = new Quill('#editor', {
 });
 
 
+
 // Takes the JSON of content in the database and displays it in quill.
-function loadText() {
+function loadFromDatabase() {
+  
+  db.collection("files")
+    .where("fileid", "==", fileID)
+    .get()
+    .then(files => {
 
- db.collection("files")
-  .where("fileid", "==", fileID)
-  .get()
-  .then(files => {
+      files.forEach(file => {
 
-    files.forEach(file => {
+        // Reads the JSON from the database
+        let json = file.data().content;
 
-      // Reads the JSON from the database
-      let json = file.data().content;
+        // Converts to the Delta object
+        delta = JSON.parse(json);
 
-      // Converts to the Delta object
-      delta = JSON.parse(json);
+        // Puts those contents into quill
+        quill.setContents(delta);
 
-      // Puts those contents into quill
-      quill.setContents(delta);
+      });
 
     });
-
-  });
 
 }
 
 
 // Takes the content in the text editor and writes it to the database.
-function saveText() {
+function saveToDatabase() {
 
   // Delta Object
   let delta = quill.getContents();
@@ -63,11 +67,35 @@ function saveText() {
           db.collection("files").doc(file.id).update({
             content: json
           });
-
+          
         });
 
       });
 
 }
 
-loadText();
+
+// Saves the text to the local storage
+function saveToLocalStorage() {
+
+  console.log("test");
+
+}
+
+
+// Runs a different course of action depending on whether its a new or existing file.
+function determineExistence() {
+  
+  if (fileID) {
+
+    loadFromDatabase();
+
+  } else {
+
+    saveToLocalStorage();
+
+  }
+
+}
+
+determineExistence();
