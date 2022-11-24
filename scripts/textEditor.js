@@ -49,13 +49,13 @@ function loadFromDatabase() {
 
 
 // Takes the content in the text editor and writes it to the database.
-function saveToDatabase() {
+function saveToDatabase(json) {
 
   // Delta Object
   let delta = quill.getContents();
   
   // Convert to JSON
-  let json = JSON.stringify(delta);
+  var json = JSON.stringify(delta);
 
   db.collection("files")
   .where("fileid", "==", fileID)
@@ -75,24 +75,51 @@ function saveToDatabase() {
 }
 
 
-// Saves the text to the local storage
-function saveToLocalStorage() {
+// Loads the text from the session storage
+function loadFromSessionStorage() {
 
-  console.log("test");
 
+
+}
+
+
+// Saves the text to the session storage
+function saveToSessionStorage() {
+
+  // Delta Object
+  let delta = quill.getContents();
+
+  // Convert to JSON
+  var json = JSON.stringify(delta);
+
+  // Puts the text editor contents into the session's storage
+  sessionStorage.setItem('documentContents', json);
+
+  console.log("saved to session storage");
+  
 }
 
 
 // Runs a different course of action depending on whether its a new or existing file.
 function determineExistence() {
   
+  var actionButton = document.getElementById("submit");
+
   if (fileID) {
+
+    console.log("file exists!");
 
     loadFromDatabase();
 
+    actionButton.addEventListener("click", saveToDatabase);
+
   } else {
 
-    saveToLocalStorage();
+    console.log("new file.");
+
+    console.log(sessionStorage);
+
+    actionButton.addEventListener("click", saveToSessionStorage);
 
   }
 
