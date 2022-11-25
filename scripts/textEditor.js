@@ -1,4 +1,15 @@
 
+// Declaring variables for discard functionality
+var discardButton = document.getElementById("discard");
+var cancelButton = document.getElementById("cancel");
+var warning = document.getElementById("warning");
+
+// Declaring variables for saving text
+var continueButton = document.getElementById("continue");
+var confirmation = document.getElementById("confirmation");
+
+
+
 // Get the file ID from the URL
 var params = new URL(window.location.href);
 var fileID;
@@ -41,7 +52,7 @@ quill.on("text-change", function(delta, oldDelta, source) {
     // Saves everything locally
     saveToSessionStorage();
 
-    document.getElementById("confirmation").innerHTML = "";
+    confirmation.innerHTML = "";
 
   }
 
@@ -103,7 +114,6 @@ function saveToDatabase(json) {
 
       });
 
-  var confirmation = document.getElementById("confirmation");
   confirmation.innerHTML = "saved!";
 
   sessionStorage.removeItem(fileID);
@@ -146,16 +156,26 @@ function saveToSessionStorage() {
 }
 
 
+function discardChanges(choice) {
+
+  // if (sessionStorage.getItem(fileID)) {
+
+  //   //confirmation.innerHTML = "Click "
+  //   sessionStorage.removeItem(fileID);
+  //   sessionStorage.removeItem(fileID + "_changed");
+
+  // }  
+
+}
+
+
 // Runs a different course of action depending on whether its a new or existing file.
-function determineExistence() { 
-  
-  var saveButton = document.getElementById("save");
-  var nextButton = document.getElementById("next");
+function setupEditor() { 
+
+  cancelButton.hidden = true;
 
   // if file is not a new document
   if (fileID != "newDoc") {
-
-    console.log("file exists!");
 
     if (changed)
       // gets those changes
@@ -164,22 +184,20 @@ function determineExistence() {
       // gets the content from the database
       loadFromDatabase();
 
-    saveButton.addEventListener("click", saveToDatabase);
-    nextButton.remove();
+    continueButton.innerHTML = "Save";
+    continueButton.addEventListener("click", saveToDatabase);
 
   } 
   // if the file is a new document
   else {
 
-    console.log("new file.");
-
     loadFromSessionStorage();
 
-    saveButton.remove();
-    // nextButton.addEventListener("click", );
+    continueButton.innerHTML = "Next";
+    // continueButton.addEventListener("click", );
 
   }
 
 }
 
-determineExistence();
+setupEditor();
