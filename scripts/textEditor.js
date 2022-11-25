@@ -1,4 +1,15 @@
 
+// Declaring variables for discard functionality
+var discardButton = document.getElementById("discard");
+var cancelButton = document.getElementById("cancel");
+var warning = document.getElementById("warning");
+
+// Declaring variables for saving text
+var continueButton = document.getElementById("continue");
+var confirmation = document.getElementById("confirmation");
+
+
+
 // Get the file ID from the URL
 var params = new URL(window.location.href);
 var fileID;
@@ -41,7 +52,8 @@ quill.on("text-change", function(delta, oldDelta, source) {
     // Saves everything locally
     saveToSessionStorage();
 
-    document.getElementById("confirmation").innerHTML = "";
+    warning.innerHTML = "";
+    confirmation.innerHTML = "";
 
   }
 
@@ -103,7 +115,6 @@ function saveToDatabase(json) {
 
       });
 
-  var confirmation = document.getElementById("confirmation");
   confirmation.innerHTML = "saved!";
 
   sessionStorage.removeItem(fileID);
@@ -146,16 +157,53 @@ function saveToSessionStorage() {
 }
 
 
+function discardChanges(choice) {
+
+  if (sessionStorage.getItem(fileID)) {
+
+    // first time user discards changes
+    if (choice == "discard" && cancelButton.hidden == true) {
+
+      discardButton.innerHTML = "Confirm";
+      cancelButton.hidden = false;
+      warning.innerHTML = "Are you sure you would like to discard your changes?";
+
+    } 
+    // second time when user clicks confirm
+    else if (choice == "discard" && cancelButton.hidden == false) {
+
+      sessionStorage.removeItem(fileID);
+      sessionStorage.removeItem(fileID + "_changed");
+
+      warning.innerHTML = "Changes discarded.";
+      quill.setContents("");
+
+      discardButton.innerHTML = "Discard Changes";
+      cancelButton.hidden = true;
+
+      if (fileID != "newDoc")
+        loadFromDatabase();
+
+    } else if (choice == "cancel") {
+
+      discardButton.innerHTML = "Discard Changes";
+      cancelButton.hidden = true;
+      warning.innerHTML = "Cancelled!";
+
+    }
+
+  }  
+
+}
+
+
 // Runs a different course of action depending on whether its a new or existing file.
-function determineExistence() { 
-  
-  var saveButton = document.getElementById("save");
-  var nextButton = document.getElementById("next");
+function setupEditor() { 
+
+  cancelButton.hidden = true;
 
   // if file is not a new document
   if (fileID != "newDoc") {
-
-    console.log("file exists!");
 
     if (changed)
       // gets those changes
@@ -164,22 +212,20 @@ function determineExistence() {
       // gets the content from the database
       loadFromDatabase();
 
-    saveButton.addEventListener("click", saveToDatabase);
-    nextButton.remove();
+    continueButton.innerHTML = "Save";
+    continueButton.addEventListener("click", saveToDatabase);
 
   } 
   // if the file is a new document
   else {
 
-    console.log("new file.");
-
     loadFromSessionStorage();
 
-    saveButton.remove();
-    // nextButton.addEventListener("click", );
+    continueButton.innerHTML = "Next";
+    // continueButton.addEventListener("click", );
 
   }
 
 }
 
-determineExistence();
+setupEditor();
