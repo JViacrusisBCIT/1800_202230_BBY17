@@ -24,7 +24,8 @@ var nonVisualCards;
 
 
 // If the user is coming from 'create new doc' path
-var isNewDoc = parameters.searchParams.get("newDoc");
+if (sessionStorage.getItem("newDoc"))
+    var isNewDoc = parameters.searchParams.get("newDoc");
 
 
 
@@ -133,7 +134,7 @@ function loadClassrooms() {
 
                                 let redirectPath = "students.html?classid=" + classroom.data().classid;
 
-                                if (isNewDoc)
+                                if (isNewDoc && sessionStorage.getItem("newDoc"))
                                     redirectPath += "&newDoc=true";
 
                                 displayCard(numOfCards, redirectPath, classroom.data().name, "user.svg", "");
@@ -156,16 +157,13 @@ function loadClassrooms() {
                             
                             if ( !classrooms.metadata.hasPendingWrites ) {
 
-                                if (isNewDoc)
-                                    console.log("is new doc");
-
                                 let alreadyCreated = 0;
 
                                 classrooms.forEach(classroom => {
 
                                     let redirectPath = "students.html?classid=" + classroom.data().classid;
 
-                                    if (isNewDoc)
+                                    if (isNewDoc && sessionStorage.getItem("newDoc"))
                                         redirectPath += "&newDoc=true";
                                     
                                     if (numOfCards <= alreadyCreated) {
@@ -219,6 +217,9 @@ function loadStudents() {
                 });
 
                 let redirectPath = "files.html?studentid=" + std.data().studentid;
+
+                if (isNewDoc && sessionStorage.getItem("newDoc"))
+                    redirectPath += "&newDoc=true";
                 
                 let card = displayCard(numOfCards, redirectPath, fullName, "user.svg", "");
 
@@ -243,6 +244,9 @@ function loadStudents() {
                     students.forEach(std => {
 
                         let redirectPath = "students.html?classid=" + std.data().classid;
+
+                        if (isNewDoc && sessionStorage.getItem("newDoc"))
+                            redirectPath += "&newDoc=true";
 
                         if (numOfCards <= alreadyCreated) {
 
