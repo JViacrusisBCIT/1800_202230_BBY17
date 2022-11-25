@@ -30,12 +30,14 @@ body {
       &:before {
         content: '[';
         left: 0;
+        display: none;
       }
   
       &:after {
         content: ']';
         position: absolute;
         right: 0;
+        display: none;
       }
   
       &:after, &:before {
@@ -67,10 +69,10 @@ body {
         list-style: none;
         
         -webkit-animation-name: change;
-        -webkit-animation-duration: 10s;
+        -webkit-animation-duration: 2s;
         -webkit-animation-iteration-count: infinite;
         animation-name: change;
-        animation-duration: 10s;
+        animation-duration: 2s;
         animation-iteration-count: infinite;
   
         &__item {

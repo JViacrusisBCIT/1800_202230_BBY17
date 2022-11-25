@@ -25,11 +25,13 @@ body {
 .content__container:before {
   content: "[";
   left: 0;
+  display: none;
 }
 .content__container:after {
   content: "]";
   position: absolute;
   right: 0;
+  display: none;
 }
 .content__container:after, .content__container:before {
   position: absolute;
@@ -55,10 +57,10 @@ body {
   text-align: left;
   list-style: none;
   -webkit-animation-name: change;
-  -webkit-animation-duration: 10s;
+  -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
   animation-name: change;
-  animation-duration: 10s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
 }
 .content__container__list__item {
