@@ -52,6 +52,7 @@ quill.on("text-change", function(delta, oldDelta, source) {
     // Saves everything locally
     saveToSessionStorage();
 
+    warning.innerHTML = "";
     confirmation.innerHTML = "";
 
   }
@@ -158,13 +159,40 @@ function saveToSessionStorage() {
 
 function discardChanges(choice) {
 
-  // if (sessionStorage.getItem(fileID)) {
+  if (sessionStorage.getItem(fileID)) {
 
-  //   //confirmation.innerHTML = "Click "
-  //   sessionStorage.removeItem(fileID);
-  //   sessionStorage.removeItem(fileID + "_changed");
+    // first time user discards changes
+    if (choice == "discard" && cancelButton.hidden == true) {
 
-  // }  
+      discardButton.innerHTML = "Confirm";
+      cancelButton.hidden = false;
+      warning.innerHTML = "Are you sure you would like to discard your changes?";
+
+    } 
+    // second time when user clicks confirm
+    else if (choice == "discard" && cancelButton.hidden == false) {
+
+      sessionStorage.removeItem(fileID);
+      sessionStorage.removeItem(fileID + "_changed");
+
+      warning.innerHTML = "Changes discarded.";
+      quill.setContents("");
+
+      discardButton.innerHTML = "Discard Changes";
+      cancelButton.hidden = true;
+
+      if (fileID != "newDoc")
+        loadFromDatabase();
+
+    } else if (choice == "cancel") {
+
+      discardButton.innerHTML = "Discard Changes";
+      cancelButton.hidden = true;
+      warning.innerHTML = "Cancelled!";
+
+    }
+
+  }  
 
 }
 
