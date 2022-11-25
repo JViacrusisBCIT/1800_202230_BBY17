@@ -1,3 +1,8 @@
+
+// Get the URL String
+var parameters = new URL(window.location.href);
+
+
 // Locates the div container that holds the gallery
 var gallery = document.getElementById('gallery');
 
@@ -16,6 +21,10 @@ var nonVisualHeader;
 
 // The container for the non-visual cards
 var nonVisualCards;
+
+
+// If the user is coming from 'create new doc' path
+var isNewDoc = parameters.searchParams.get("newDoc");
 
 
 
@@ -124,6 +133,9 @@ function loadClassrooms() {
 
                                 let redirectPath = "students.html?classid=" + classroom.data().classid;
 
+                                if (isNewDoc)
+                                    redirectPath += "&newDoc=true";
+
                                 displayCard(numOfCards, redirectPath, classroom.data().name, "user.svg", "");
 
                                 numOfCards++;
@@ -144,11 +156,17 @@ function loadClassrooms() {
                             
                             if ( !classrooms.metadata.hasPendingWrites ) {
 
+                                if (isNewDoc)
+                                    console.log("is new doc");
+
                                 let alreadyCreated = 0;
 
                                 classrooms.forEach(classroom => {
 
                                     let redirectPath = "students.html?classid=" + classroom.data().classid;
+
+                                    if (isNewDoc)
+                                        redirectPath += "&newDoc=true";
                                     
                                     if (numOfCards <= alreadyCreated) {
 
@@ -178,8 +196,7 @@ function loadClassrooms() {
 // Injects a card for each student in the database
 function loadStudents() {
 
-    let params = new URL(window.location.href);
-    let classID = params.searchParams.get("classid");
+    let classID = parameters.searchParams.get("classid");
 
     var numOfCards = 0;
 
@@ -202,7 +219,7 @@ function loadStudents() {
                 });
 
                 let redirectPath = "files.html?studentid=" + std.data().studentid;
-
+                
                 let card = displayCard(numOfCards, redirectPath, fullName, "user.svg", "");
 
                 numOfCards++;
@@ -226,7 +243,7 @@ function loadStudents() {
                     students.forEach(std => {
 
                         let redirectPath = "students.html?classid=" + std.data().classid;
-                        
+
                         if (numOfCards <= alreadyCreated) {
 
                             displayCard(numOfCards, redirectPath, std.data().name, "user.svg", "");
@@ -251,8 +268,7 @@ function loadStudents() {
 // Injects a card for each file the student has
 function loadFiles() {
 
-    let params = new URL(window.location.href);
-    let studentID = params.searchParams.get("studentid");
+    let studentID = parameters.searchParams.get("studentid");
 
     db.collection("files")
     .where("studentid", "==", studentID)
