@@ -50,39 +50,37 @@
 
 <body>
   
-  <div class="container">
+  <div class="cell nav-bar">
+    <nav id="nav"></nav>
+  </div>
 
-    <div class="cell nav-bar">
-      <nav id="nav"></nav>
-    </div>
+  <div class="row">
+
+  
     
 
 
     <!-- put your code here!! :) -->
-    <!--Where the Editor is going live-->
-    <!--parent div element, in which quill editor should fit-->
-    <div id="parent">
-       
-      <!--Quill Editor Div-->
-      <div id="editor" placeholder="Enter Text"></div>
-      
-   
-      <div class="row">
-        <button id="submit" type="submit">Save</button>
-      </div>
+    <div >
+        <div class="col-lg">
+          
+          <!--Quill Editor Div-->
+          <div id="editor" placeholder="Enter Text"></div>
+          
+          <button id="save" type="button">Save</button>
+          <button id="next" type="button" class="btn btn-dark">Next</button>
+          <p id="confirmation"></p>
 
-      <button type="button" class="btn btn-dark" onclick="location.href='classrooms.html';">Next</button>
-
+        </div>
     </div>
+
     
-
-    <div class="cell footer">
-      <nav id="foot"></nav>
-    </div>
 
   </div>
 
-
+  <div class="cell footer fixed-bottom">
+    <nav id="foot"></nav>
+  </div>
   <!-- Our JavaScript files -->
   <script src="../scripts/firebaseAPI.js"></script>
   <script src="../scripts/inject_templates.js"></script>

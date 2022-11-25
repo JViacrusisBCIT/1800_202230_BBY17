@@ -1,9 +1,12 @@
 
 // Get the file ID from the URL
 var params = new URL(window.location.href);
+var fileID;
 
 if (params.searchParams.get("fileid"))
-  var fileID = params.searchParams.get("fileid");
+  fileID = params.searchParams.get("fileid");
+else
+  fileID = "newDoc";
 
 
 
@@ -22,9 +25,35 @@ var quill = new Quill('#editor', {
 
 
 
+// If user has changed that document
+var changed = sessionStorage.getItem(fileID + '_changed');
+console.log(changed);
+
+// Sets changed to true if user changes document
+quill.on("text-change", function(delta, oldDelta, source) {
+
+  if (source == "user") {
+
+    sessionStorage.setItem(fileID + '_changed', true);
+
+    console.log("changes made?", sessionStorage.getItem(fileID + '_changed'));
+
+    // Saves everything locally
+    saveToSessionStorage();
+
+    document.getElementById("confirmation").innerHTML = "";
+
+  }
+
+});
+
+
+
 // Takes the JSON of content in the database and displays it in quill.
 function loadFromDatabase() {
   
+  console.log("load from database");
+
   db.collection("files")
     .where("fileid", "==", fileID)
     .get()
@@ -51,6 +80,8 @@ function loadFromDatabase() {
 // Takes the content in the text editor and writes it to the database.
 function saveToDatabase(json) {
 
+  console.log("save to database");
+
   // Delta Object
   let delta = quill.getContents();
   
@@ -72,18 +103,33 @@ function saveToDatabase(json) {
 
       });
 
+  var confirmation = document.getElementById("confirmation");
+  confirmation.innerHTML = "saved!";
+
+  sessionStorage.removeItem(fileID);
+  sessionStorage.removeItem(fileID + "_changed");
+
 }
 
 
 // Loads the text from the session storage
 function loadFromSessionStorage() {
 
+  console.log("load from session storage");
 
+  // Reads the JSON from the session storage
+  let json = sessionStorage.getItem(fileID);
+
+  // Converts to the Delta object
+  delta = JSON.parse(json);
+
+  // Puts those contents into quill
+  quill.setContents(delta);
 
 }
 
 
-// Saves the text to the session storage
+// Saves the text to the session storage (automatic!)
 function saveToSessionStorage() {
 
   // Delta Object
@@ -93,33 +139,44 @@ function saveToSessionStorage() {
   var json = JSON.stringify(delta);
 
   // Puts the text editor contents into the session's storage
-  sessionStorage.setItem('documentContents', json);
+  sessionStorage.setItem(fileID, json);
 
-  console.log("saved to session storage");
+  console.log("saved to session storage", sessionStorage.getItem(fileID));
   
 }
 
 
 // Runs a different course of action depending on whether its a new or existing file.
-function determineExistence() {
+function determineExistence() { 
   
-  var actionButton = document.getElementById("submit");
+  var saveButton = document.getElementById("save");
+  var nextButton = document.getElementById("next");
 
-  if (fileID) {
+  // if file is not a new document
+  if (fileID != "newDoc") {
 
     console.log("file exists!");
 
-    loadFromDatabase();
+    if (changed)
+      // gets those changes
+      loadFromSessionStorage();
+    else if (!changed)
+      // gets the content from the database
+      loadFromDatabase();
 
-    actionButton.addEventListener("click", saveToDatabase);
+    saveButton.addEventListener("click", saveToDatabase);
+    nextButton.remove();
 
-  } else {
+  } 
+  // if the file is a new document
+  else {
 
     console.log("new file.");
 
-    console.log(sessionStorage);
+    loadFromSessionStorage();
 
-    actionButton.addEventListener("click", saveToSessionStorage);
+    saveButton.remove();
+    // nextButton.addEventListener("click", );
 
   }
 

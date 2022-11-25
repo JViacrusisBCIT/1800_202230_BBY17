@@ -57,7 +57,10 @@ function handleTouchMove(evt) {//this function is actually telling it what to do
     yDown = null;                                             
 };
 
-function hideDiv(divname){
-    var element = document.getElementById(divname);
+function hideDivs(divname1, divname2){
+    var element = document.getElementById(divname1);
     element.style.display = "none";
+    var element2 = document.getElementById(divname2);
+    element2.style.display = "none";
+
 }
