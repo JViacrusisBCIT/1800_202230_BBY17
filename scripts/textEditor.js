@@ -1,9 +1,12 @@
 
 // Get the file ID from the URL
 var params = new URL(window.location.href);
+var fileID;
 
 if (params.searchParams.get("fileid"))
-  var fileID = params.searchParams.get("fileid");
+  fileID = params.searchParams.get("fileid");
+else
+  fileID = "newDoc";
 
 
 
@@ -21,8 +24,9 @@ var quill = new Quill('#editor', {
 });
 
 
+
 // If user has changed that document
-var changed = sessionStorage.getItem('changed');
+var changed = sessionStorage.getItem(fileID + '_changed');
 console.log(changed);
 
 // Sets changed to true if user changes document
@@ -30,17 +34,18 @@ quill.on("text-change", function(delta, oldDelta, source) {
 
   if (source == "user") {
 
-    sessionStorage.setItem('changed', true);
+    sessionStorage.setItem(fileID + '_changed', true);
 
-    console.log("changes made?", sessionStorage.getItem('changed'));
+    console.log("changes made?", sessionStorage.getItem(fileID + '_changed'));
 
     // Saves everything locally
     saveToSessionStorage();
 
+    document.getElementById("confirmation").innerHTML = "";
+
   }
 
 });
-
 
 
 
@@ -101,6 +106,8 @@ function saveToDatabase(json) {
   var confirmation = document.getElementById("confirmation");
   confirmation.innerHTML = "saved!";
 
+  sessionStorage.removeItem(fileID);
+  sessionStorage.removeItem(fileID + "_changed");
 
 }
 
@@ -111,7 +118,7 @@ function loadFromSessionStorage() {
   console.log("load from session storage");
 
   // Reads the JSON from the session storage
-  let json = sessionStorage.getItem("documentContents");
+  let json = sessionStorage.getItem(fileID);
 
   // Converts to the Delta object
   delta = JSON.parse(json);
@@ -132,9 +139,9 @@ function saveToSessionStorage() {
   var json = JSON.stringify(delta);
 
   // Puts the text editor contents into the session's storage
-  sessionStorage.setItem('documentContents', json);
+  sessionStorage.setItem(fileID, json);
 
-  console.log("saved to session storage", sessionStorage.getItem('documentContents'));
+  console.log("saved to session storage", sessionStorage.getItem(fileID));
   
 }
 
@@ -145,8 +152,8 @@ function determineExistence() {
   var saveButton = document.getElementById("save");
   var nextButton = document.getElementById("next");
 
-  // if the file already exists
-  if (fileID) {
+  // if file is not a new document
+  if (fileID != "newDoc") {
 
     console.log("file exists!");
 
@@ -161,7 +168,7 @@ function determineExistence() {
     nextButton.remove();
 
   } 
-  // if the file does not yet exist
+  // if the file is a new document
   else {
 
     console.log("new file.");
