@@ -2,31 +2,30 @@
 <html lang="en">
 
 <head>
-  
+
   <title>iinsight</title>
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Our Stylesheets -->  
+  <!-- Our Stylesheets -->
   <link rel="stylesheet" href="../styles/style.css">
 
   <!-- Our Javascript Files -->
-  <!-- put scripts here--> 
+  <!-- put scripts here-->
 
   <!-- Bootstrap Library CSS CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
   <!-- Boostrap Library JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-  crossorigin="anonymous"></script>
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
 
   <!-------------------------------------------------------->
   <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
@@ -35,75 +34,101 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"/>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
 
   <!-- JQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
 
 <body>
-  
-  <div class="container">
 
-    <div class="cell nav-bar">
-      <nav id="nav"></nav>
-    </div>
+  <div class="container-fluid">
+
     
-    <div class="cell welcome-banner" id="welcome-banner">
-      <div class="jumbotron">
-          <h1 class="display-3">Thank you!</h1>
-          <p>We're glad you chose iinsight.</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Start tutorial</a></p>
-          <p><a class="btn btn-secondary btn-lg" href="#" role="button" onclick="hideDiv('welcome-banner')">Skip</a></p>
-          <img id="welcome-banner-close-button" src="../images/x-svgrepo-com.svg" class="btn btn-light" type="submit" onclick="hideDiv('welcome-banner')">
-          
+
+    <!-- <div class="row"> -->
+
+      <div class="cell nav-bar row">
+        <nav id="nav"></nav>
       </div>
 
-      <div class="eyebox">
-        <div class="eyes" id="eye1"></div>
-        <div class="eyes" id="eye2"></div>
+      <div class="row"><br><br><br></div>
+
+      <div class="cell welcome-banner justify-content-cente row" id="welcome-banner">
+
+        <div class="col-3"></div>
+        <div class="jumbotron col-4">
+          <div>
+            <h1 class="display-3">Thank you!</h1>
+            <p>We're glad you chose iinsight.</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Start tutorial</a></p>
+            <p><a class="btn btn-secondary btn-lg" href="#" role="button" onclick="hideDiv('welcome-banner')">Skip</a></p>
+          </div>
+        </div>
+
+          <div class="col-2">
+            <img id="welcome-banner-close-button" src="../images/x-svgrepo-com.svg" class="btn btn-light" type="submit" onclick="hideDiv('welcome-banner')">
+          </div>
+
+        </div>
+        
+ 
+
+       
+
+      
+      
+        <!-- <div class="eyebox">
+          <div class="eyes" id="eye1"></div>
+          <div class="eyes" id="eye2"></div>
+        </div>
+      </div> -->
+
+
+      <div class="row justify-content-center">
+
+      <div class="cell tile tile1 new-document col d-flex justify-content-end">
+        <button type="button" class="btn btn-light btn-square-md" onclick="location.href='textEditor.html';">
+          <img id="new-document-button" src="../images/pen-svgrepo-com_1.svg" class="btn" type="submit">
+        </button>
+      </div>
+
+      <div class="cell tile tile2 new-recorded-document col">
+        <button type="button" class="btn btn-light btn-square-md" onclick="location.href='speech.html';">
+          <img id="new-recorded-document-button" src="../images/microphone-svgrepo-com.svg" class="btn" type="submit">
+        </button>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="cell tile tile3 new-media col d-flex justify-content-end">
+        <button type="button" class="btn btn-light btn-square-md" onclick="location.href='camera.html';">
+          <img id="new-media-button" src="../images/camera-svgrepo-com.svg" class="btn" type="submit">
+        </button>
+      </div>
+
+      <div class="cell tile tile4 view-files col">
+        <button type="button" class="btn btn-light btn-square-md" onclick="location.href='classrooms.html';">
+          <img id="view-files-button" src="../images/folder-svgrepo-com.svg" class="btn" type="submit">
+        </button>
       </div>
     </div>
-    
-    
 
-    <div class="cell tile tile1 new-document">
-      <button type="button" class="btn btn-light btn-square-md" onclick="location.href='textEditor.html';">
-        <img id="new-document-button" src="../images/pen-svgrepo-com_1.svg" class="btn" type="submit">
-      </button>
-    </div>
-    
-    <div class="cell tile tile2 new-recorded-document">
-      <button type="button" class="btn btn-light btn-square-md" onclick="location.href='speech.html';">
-        <img id="new-recorded-document-button" src="../images/microphone-svgrepo-com.svg" class="btn" type="submit">
-      </button>
-    </div>
-    
-    <div class="cell tile tile3 new-media">
-      <button type="button" class="btn btn-light btn-square-md" onclick="location.href='camera.html';">
-        <img id="new-media-button" src="../images/camera-svgrepo-com.svg" class="btn" type="submit">
-      </button>
-    </div>
-    
-    <div class="cell tile tile4 view-files">
-      <button type="button" class="btn btn-light btn-square-md" onclick="location.href='classrooms.html';">
-        <img id="view-files-button" src="../images/folder-svgrepo-com.svg" class="btn" type="submit">
-      </button>
-    </div>
-    
-    <div class="cell footer">
-      <nav id="foot"></nav>
-    </div>
+      <div class="cell footer row">
+        <nav id="foot"></nav>
+      </div>
 
-  </div>
+    
+  <!-- </div> -->
 
   <!-- Our Javascript Files -->
   <script src="../scripts/inject_templates.js"></script>
-  <script src="../scripts/eyeball.js"></script>
+  <!-- <script src="../scripts/eyeball.js"></script> -->
 
 </body>
 

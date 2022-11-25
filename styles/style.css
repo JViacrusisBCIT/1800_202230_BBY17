@@ -62,13 +62,13 @@ body {
 /*/////////////////////////////
 //          Navbar           //
 /////////////////////////////*/
-.welcome-banner { 
+/* .welcome-banner { 
   grid-area: welcome-banner;
   margin: 0 auto;
-}
+} */
 
 #welcome-banner-close-button {
-  position: relative;
+
   bottom: 22vh;
   left: 35vw;
 }
@@ -160,6 +160,12 @@ body {
       border-left: none;
   }
 }*/
+
+.nav-bar{
+  align-items: center;
+}
+
+
 
  .eyebox{
     display: flex;
