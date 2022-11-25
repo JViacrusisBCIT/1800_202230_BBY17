@@ -11,6 +11,8 @@
 
   <!-- Our Stylesheets -->
   <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/welcome.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
   <!-- Our Javascript Files -->
   <!-- put scripts here-->
@@ -44,7 +46,7 @@
 </head>
 
 
-<body>
+<body class="overflow-auto"> 
 
   <div class="container-fluid">
 
@@ -55,23 +57,58 @@
       <div class="cell nav-bar row">
         <nav id="nav"></nav>
       </div>
+      <br><br>
 
-      <div class="row"><br><br><br></div>
 
-      <div class="cell welcome-banner justify-content-cente row" id="welcome-banner">
+
+      <div class="row justify-content-center" id="awesome-welcome">
+
+        <div class="content col-8 col-md-6 col-lg-5 col-xl-4">
+          <div class="content__container">
+            <p class="content__container__text">
+              Hello
+            </p>
+            
+            <ul class="content__container__list">
+              <li class="content__container__list__item">world !</li>
+              <li class="content__container__list__item">comp1800 !</li>
+              <li class="content__container__list__item">users !</li>
+              <li class="content__container__list__item">everybody !</li>
+              <li class="content__container__list__item">teachers !</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-2" style="width: 20%; display: none;">
+          words
+        </div>
+        
+
+      </div>
+
+      <br><br>
+
+      <!-- <div class="row">
+        <div></div>
+
+      </div> -->
+      
+
+      <div class="cell welcome-banner justify-content-cente row" id="welcome-banner" >
 
         <div class="col-3"></div>
         <div class="jumbotron col-4">
           <div>
-            <h1 class="display-3">Thank you!</h1>
-            <p>We're glad you chose iinsight.</p>
+
+            <!-- <h1 class="display-3">Thank you!</h1> -->
+            <p>We're glad you chose iinsight.</p> 
             <p><a class="btn btn-primary btn-lg" href="#" role="button">Start tutorial</a></p>
-            <p><a class="btn btn-secondary btn-lg" href="#" role="button" onclick="hideDiv('welcome-banner')">Skip</a></p>
+            <p><a class="btn btn-secondary btn-lg" href="#" role="button" onclick="hideDivs('welcome-banner', 'awesome-welcome')">Skip</a></p>
           </div>
         </div>
 
           <div class="col-2">
-            <img id="welcome-banner-close-button" src="../images/x-svgrepo-com.svg" class="btn btn-light" type="submit" onclick="hideDiv('welcome-banner')">
+            <img id="welcome-banner-close-button" src="../images/x-svgrepo-com.svg" class="btn btn-light" type="submit" onclick="hideDivs('welcome-banner', 'awesome-welcome')">
           </div>
 
         </div>
@@ -89,7 +126,7 @@
       </div> -->
 
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center m-0">
 
       <div class="cell tile tile1 new-document col d-flex justify-content-end">
         <button type="button" class="btn btn-light btn-square-md" onclick="location.href='textEditor.html';">
