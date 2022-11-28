@@ -106,17 +106,4 @@ function makeId(length) {
     return result;
 }
 
-// function deleteStudentByName(name) {
 
-//     getTeacherIdFromCurUser((teacherId) => {
-//         db.collection("students")
-//             .where("name", "==", name)
-//             .get()
-//                 .then((students) => {
-//                     students.forEach(std => {
-//                         console.log(std.data().name);
-//                         std.ref.delete();
-//                     });
-//                 })
-//     })
-// }
