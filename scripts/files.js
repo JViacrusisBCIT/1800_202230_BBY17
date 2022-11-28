@@ -15,7 +15,7 @@ if (isNewDoc && sessionStorage.getItem("newDoc"))
     let modalTitle = newFileModal.querySelector('.modal-title');
     modalTitle.textContent = 'New File';
 
-// confirm file creation
+// confirm file creation 
 confirmCreateButton.addEventListener('click', function (event) {
     //hides the file creation modal
     bsNewFileModal.hide();
@@ -63,3 +63,4 @@ function makeId(length) {
     return result;
 
 }
+

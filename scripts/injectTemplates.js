@@ -18,7 +18,7 @@ var yDown = null; // for y direction
 function getTouches(evt) {
   return evt.touches ||             // browser API
          evt.originalEvent.touches; // jQuery
-}                                  //haha it says touches                   
+}           
                                                                          
 function handleTouchStart(evt) {
     const firstTouch = getTouches(evt)[0];       //haha touches                               
@@ -37,7 +37,7 @@ function handleTouchMove(evt) {//this function is actually telling it what to do
     var xDiff = xDown - xUp;
     var yDiff = yDown - yUp;
                                                                          
-    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
         if ( xDiff > 0 ) {
             history.forward();//left swipe
             // $('.container').toggleClass('show');//dont mess with this
