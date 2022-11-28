@@ -61,6 +61,10 @@ body {
   overflow-y: scroll;
 }
 
+#non-visual-cards {
+  margin-bottom: 8%;
+}
+
 .cards-header {
   margin: 4% 0 3% 0;
 }
@@ -134,13 +138,13 @@ body {
 //    Add Student Button     //
 /////////////////////////////*/
 
-#add-new-classroom-button {
+#add-new-student-button {
   position: absolute;
   bottom: 15vh;
   right: 5vw;
 }
 
-#add-new-classroom-icon {
+#add-new-student-icon {
   height: 10vh;
   width: 10vh;
 }
@@ -150,16 +154,16 @@ body {
 /////////////////////////////*/
 
 /*/////////////////////////////
-//    Add Student Button     //
+//    Add File Button     //
 /////////////////////////////*/
 
-#add-new-student-button {
+#add-new-file-button {
   position: absolute;
   bottom: 15vh;
   right: 5vw;
 }
 
-#add-new-student-icon {
+#add-new-file-icon {
   height: 10vh;
   width: 10vh;
 }

@@ -54,22 +54,26 @@
     <nav id="nav"></nav>
   </div>
 
-  <div class="row">
+  <div id="content" class="row">
 
   
     
-
-
-    <!-- put your code here!! :) -->
-    <div >
+    <div>
         <div class="col-lg">
           
           <!--Quill Editor Div-->
-          <div id="editor" class="h-100 overflow-auto" placeholder="Enter Text"></div>
+
+
+          <div id="editor-container">
+            <div id="editor" placeholder="Enter Text"></div>
+          </div>
+
           
-          <button id="save" type="button">Save</button>
-          <button id="next" type="button" class="btn btn-dark">Next</button>
-          <p id="confirmation"></p>
+          <button id="discard" type="button" class="mt-4" onclick="discardChanges('discard')">Discard Changes</button>
+          <button id="cancel" type="button" onclick="discardChanges('cancel')">Cancel</button>
+          <p id="warning" class="mt-3"></p>
+          <button id="continue" type="button" class="btn btn-dark mt-3"></button>
+          <p id="confirmation" class="mt-3"></p>
 
         </div>
     </div>
@@ -83,7 +87,7 @@
   </div>
   <!-- Our JavaScript files -->
   <script src="../scripts/firebaseAPI.js"></script>
-  <script src="../scripts/inject_templates.js"></script>
+  <script src="../scripts/injectTemplates.js"></script>
   <script src="../scripts/textEditor.js"></script>
   
 

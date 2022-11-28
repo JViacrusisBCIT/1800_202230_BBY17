@@ -1,4 +1,15 @@
 
+// Declaring variables for discard functionality
+var discardButton = document.getElementById("discard");
+var cancelButton = document.getElementById("cancel");
+var warning = document.getElementById("warning");
+
+// Declaring variables for saving text
+var continueButton = document.getElementById("continue");
+var confirmation = document.getElementById("confirmation");
+
+
+
 // Get the file ID from the URL
 var params = new URL(window.location.href);
 var fileID;
@@ -27,7 +38,7 @@ var quill = new Quill('#editor', {
 
 // If user has changed that document
 var changed = sessionStorage.getItem(fileID + '_changed');
-console.log(changed);
+
 
 // Sets changed to true if user changes document
 quill.on("text-change", function(delta, oldDelta, source) {
@@ -36,12 +47,13 @@ quill.on("text-change", function(delta, oldDelta, source) {
 
     sessionStorage.setItem(fileID + '_changed', true);
 
-    console.log("changes made?", sessionStorage.getItem(fileID + '_changed'));
-
     // Saves everything locally
     saveToSessionStorage();
 
-    document.getElementById("confirmation").innerHTML = "";
+    warning.innerHTML = "";
+    confirmation.innerHTML = "";
+    discardButton.innerHTML = "Discard Changes";
+    cancelButton.hidden = true;
 
   }
 
@@ -103,11 +115,18 @@ function saveToDatabase(json) {
 
       });
 
-  var confirmation = document.getElementById("confirmation");
-  confirmation.innerHTML = "saved!";
+  // if doc exists and changes have been made
+  if (fileID != "newDoc" && sessionStorage.getItem(fileID)) {
 
-  sessionStorage.removeItem(fileID);
-  sessionStorage.removeItem(fileID + "_changed");
+    confirmation.innerHTML = "saved!";
+    sessionStorage.removeItem(fileID);
+    sessionStorage.removeItem(fileID + "_changed");
+
+  } else {
+
+    confirmation.innerHTML = "No changes have been made!";
+
+  }
 
 }
 
@@ -146,16 +165,65 @@ function saveToSessionStorage() {
 }
 
 
+function discardChanges(choice) {
+
+  // if the new document is empty OR if an existing document has not been modified
+  if (quill.getText() == "\n" || fileID != "newDoc" && !sessionStorage.getItem(fileID)) {
+    
+    warning.innerHTML = "No changes to discard!";
+    
+    if (sessionStorage.getItem(fileID)) {
+      sessionStorage.removeItem(fileID);
+      sessionStorage.removeItem(fileID + "_changed");
+    }
+
+  }
+
+  if (sessionStorage.getItem(fileID)) {
+
+    // first time user discards changes
+    if (choice == "discard" && cancelButton.hidden == true) {
+
+      discardButton.innerHTML = "Confirm";
+      cancelButton.hidden = false;
+      warning.innerHTML = "Are you sure you would like to discard your changes?";
+
+    } 
+    // second time when user clicks confirm
+    else if (choice == "discard" && cancelButton.hidden == false) {
+
+      sessionStorage.removeItem(fileID);
+      sessionStorage.removeItem(fileID + "_changed");
+
+      warning.innerHTML = "Changes discarded.";
+      quill.setContents("");
+
+      discardButton.innerHTML = "Discard Changes";
+      cancelButton.hidden = true;
+
+      if (fileID != "newDoc")
+        loadFromDatabase();
+
+    } else if (choice == "cancel") {
+
+      discardButton.innerHTML = "Discard Changes";
+      cancelButton.hidden = true;
+      warning.innerHTML = "Cancelled!";
+
+    }
+
+  } 
+
+}
+
+
 // Runs a different course of action depending on whether its a new or existing file.
-function determineExistence() { 
-  
-  var saveButton = document.getElementById("save");
-  var nextButton = document.getElementById("next");
+function setupEditor() { 
+
+  cancelButton.hidden = true;
 
   // if file is not a new document
   if (fileID != "newDoc") {
-
-    console.log("file exists!");
 
     if (changed)
       // gets those changes
@@ -164,22 +232,36 @@ function determineExistence() {
       // gets the content from the database
       loadFromDatabase();
 
-    saveButton.addEventListener("click", saveToDatabase);
-    nextButton.remove();
+    continueButton.innerHTML = "Save";
+    continueButton.addEventListener("click", saveToDatabase);
 
   } 
   // if the file is a new document
   else {
 
-    console.log("new file.");
-
     loadFromSessionStorage();
 
-    saveButton.remove();
-    // nextButton.addEventListener("click", );
+    continueButton.innerHTML = "Next";
+
+    // when users clicks next it will bring them to the classrooms page
+    continueButton.addEventListener("click", () => {
+
+      // checks if empty
+      // quill automatically puts \n at the end of their deltas even if no content
+      if (quill.getText() == "\n") {
+
+        confirmation.innerHTML = "Cannot save empty file!";
+
+      } else {
+
+        window.location.href = "../pages/classrooms.html?newDoc=true";
+
+      }
+
+    });
 
   }
 
 }
 
-determineExistence();
+setupEditor();

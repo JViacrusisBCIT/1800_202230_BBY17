@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Our Stylesheets -->  
-  <link rel="stylesheet" href="../styles/cards-style.css">
+  <link rel="stylesheet" href="../styles/cardsStyle.css">
 
   <!-------------------------------------------------------->
   <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
@@ -57,6 +57,34 @@
       </a>
     </div>
   </template>
+
+      <!-- Modal hidden until "add new" button is pressed -->
+      <button type="button" id="add-new-file-button" data-bs-toggle="modal" data-bs-target="#new-file-modal" class="btn btn-light btn-square-md">
+        <img id="add-new-file-icon" src="../images/plus-sign.svg" class="btn" type="submit">
+      </button>
+    
+      <div class="modal fade" id="new-file-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Placeholder</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">File Name</label>
+                  <input type="text" class="form-control" id="file-name">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button id="confirm-create-button" type="button" class="btn btn-primary">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
   
   <div class="container">
 
@@ -75,8 +103,9 @@
 
   <!-- Our JavaScript files -->
   <script src="../scripts/firebaseAPI.js"></script>
-  <script src="../scripts/inject_templates.js"></script>
-  <script src="../scripts/load_cards.js"></script>
+  <script src="../scripts/injectTemplates.js"></script>
+  <script src="../scripts/loadCards.js"></script>
+  <script src="../scripts/files.js"></script>
 
   <script>
     // calls the loadFiles function from only this page

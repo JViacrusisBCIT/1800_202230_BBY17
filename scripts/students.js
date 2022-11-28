@@ -5,7 +5,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 var newStudentModal = document.getElementById('new-student-modal')
 var bsNewStudentModal = new bootstrap.Modal(document.getElementById('new-student-modal'), {
     keyboard: false
-  })
+})
 var confirmCreateButton = document.getElementById('confirm-create-button')
 
 
@@ -16,47 +16,51 @@ newStudentModal.addEventListener('show.bs.modal', function (event) {
 })
 
 confirmCreateButton.addEventListener('click', function (event) {
-    console.log("confirm button clicked");
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            console.log("user found");
 
-            let studentName = document.getElementById('student-name').value;
-            document.getElementById('student-name').value = "";
-            bsNewStudentModal.hide();
-            console.log(user.uid);
-            db.collection("teachers").doc(user.uid).get()
-                .then(function (doc) {
-                    if (doc.exists) {
-                        console.log("doc exists")
-                        console.log(doc.data().teacherid)
-                        return doc.data().teacherid;
-                    } else {
-                        console.log("teacher doc not found");
-                    }
-                }).then(function (teacherID) {
-                    db.collection("students").add({
-                        name: studentName,
-                        studentid: makeid(),
-                        teacherid: teacherID,
-                        classid: params.classid,
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                    }).then(function () {
-                        console.log("New student added to firestore");
-                    })
-                        .catch(function (error) {
-                            console.log("Error adding new student: " + error);
-                        })
-                }
-                );
-        } else {
-            console.log("no user is logged in")
-        }
-    }
-    )
+    //hides the classroom creation modal
+    bsNewStudentModal.hide();
+
+    let studentNameField = document.getElementById('student-name');
+    let studentName = studentNameField.value;
+    studentNameField.value = "";
+
+    getTeacherIdFromCurUser((teacherId) => {
+        createStudent(studentName, params.classid, teacherId)
+    });
+
+
 })
 
-function makeid(length) {
+// creates a student in the firesetore database
+function createStudent(sName, classId, teacherId) {
+    console.log(teacherId);
+    db.collection("students").add({
+        name: sName,
+        studentid: makeId(),
+        classid: classId,
+        teacherid: teacherId,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+}
+
+// get the teacherID of the currently logged on user
+function getTeacherIdFromCurUser(callback) {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            db.collection("teachers").doc(user.uid)
+                .get()
+                .then((doc) => {
+                    callback(doc.data().teacherid);
+                });
+        } else {
+            console.log("no user is logged in");
+            return null;
+        }
+    });
+}
+
+// makes a 20 character string using uppers, lowers, and numbers
+function makeId(length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
