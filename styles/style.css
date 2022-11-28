@@ -147,16 +147,21 @@ body {
 
 #login-prompt-container {
   position: relative;
-  left: 200%;
-  top: 100%;
+  left: 170%;
+  width: 150%;
+  top: 60%;
+  text-align: center;
+  padding: 10%;
+  background-color: #f8f9fa;
+  border: 1px solid lightgrey;
+  box-shadow: 2px 4px lightgray;
+  border-radius: 2%;  
 }  
 
 #firebaseui-auth-container {
-  position: relative;
-  left: 200%;
-  top: 100%;
+  margin: 10% auto;
+  width: 100%;
 }
-
 
 
 #add-new-classroom-button {
@@ -164,6 +169,12 @@ body {
   bottom: 50vw - 50%;
   top: 50vh - 50%;
 }
+
+#profile {
+  margin: 5%;
+}
+
+
 /*................................................
 .container {
   position: absolute;
@@ -185,7 +196,7 @@ body {
 }
 
 
-
+/* 
  .eyebox{
     display: flex;
   }
@@ -219,5 +230,5 @@ body {
 
   #eye2{
     flex: 2;
-  }
+  } */
 
