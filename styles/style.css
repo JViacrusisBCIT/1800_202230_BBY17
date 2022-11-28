@@ -67,10 +67,15 @@ body {
   margin: 0 auto;
 } */
 
+#banner {
+  text-align: center;
+}
+
 #welcome-banner-close-button {
 
   bottom: 22vh;
   left: 35vw;
+
 }
 
 /*/////////////////////////////
