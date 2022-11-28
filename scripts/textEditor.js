@@ -38,7 +38,7 @@ var quill = new Quill('#editor', {
 
 // If user has changed that document
 var changed = sessionStorage.getItem(fileID + '_changed');
-console.log(changed);
+
 
 // Sets changed to true if user changes document
 quill.on("text-change", function(delta, oldDelta, source) {
@@ -47,13 +47,13 @@ quill.on("text-change", function(delta, oldDelta, source) {
 
     sessionStorage.setItem(fileID + '_changed', true);
 
-    console.log("changes made?", sessionStorage.getItem(fileID + '_changed'));
-
     // Saves everything locally
     saveToSessionStorage();
 
     warning.innerHTML = "";
     confirmation.innerHTML = "";
+    discardButton.innerHTML = "Discard Changes";
+    cancelButton.hidden = true;
 
   }
 
@@ -115,10 +115,18 @@ function saveToDatabase(json) {
 
       });
 
-  confirmation.innerHTML = "saved!";
+  // if doc exists and changes have been made
+  if (fileID != "newDoc" && sessionStorage.getItem(fileID)) {
 
-  sessionStorage.removeItem(fileID);
-  sessionStorage.removeItem(fileID + "_changed");
+    confirmation.innerHTML = "saved!";
+    sessionStorage.removeItem(fileID);
+    sessionStorage.removeItem(fileID + "_changed");
+
+  } else {
+
+    confirmation.innerHTML = "No changes have been made!";
+
+  }
 
 }
 
@@ -159,6 +167,18 @@ function saveToSessionStorage() {
 
 function discardChanges(choice) {
 
+  // if the new document is empty OR if an existing document has not been modified
+  if (quill.getText() == "\n" || fileID != "newDoc" && !sessionStorage.getItem(fileID)) {
+    
+    warning.innerHTML = "No changes to discard!";
+    
+    if (sessionStorage.getItem(fileID)) {
+      sessionStorage.removeItem(fileID);
+      sessionStorage.removeItem(fileID + "_changed");
+    }
+
+  }
+
   if (sessionStorage.getItem(fileID)) {
 
     // first time user discards changes
@@ -192,7 +212,7 @@ function discardChanges(choice) {
 
     }
 
-  }  
+  } 
 
 }
 
@@ -222,7 +242,23 @@ function setupEditor() {
     loadFromSessionStorage();
 
     continueButton.innerHTML = "Next";
-    // continueButton.addEventListener("click", );
+
+    // when users clicks next it will bring them to the classrooms page
+    continueButton.addEventListener("click", () => {
+
+      // checks if empty
+      // quill automatically puts \n at the end of their deltas even if no content
+      if (quill.getText() == "\n") {
+
+        confirmation.innerHTML = "Cannot save empty file!";
+
+      } else {
+
+        window.location.href = "../pages/classrooms.html?newDoc=true";
+
+      }
+
+    });
 
   }
 
