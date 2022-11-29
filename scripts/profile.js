@@ -16,7 +16,6 @@ function populateInfo ()
                 {
                     let userName = userDoc.data().name;
                     let userEmail = userDoc.data().email;
-                    //let userCity = userDoc.data().city;
 
                     if ( userName != null )
                     {
@@ -26,11 +25,7 @@ function populateInfo ()
                     {
                         document.getElementById( "emailInput" ).value = userEmail;
                     }
-                    // if ( userCity != null )
-                    // { 
-                    //     console.log(userCity)
-                    //     document.getElementById( "cityInput" ).value = userCity;
-                    // }
+
                 } )
 
         } else
@@ -50,20 +45,21 @@ function editUserInfo() {
  }
 
  function saveUserInfo() {
+
     app.auth().onAuthStateChanged( user =>{
     userName = document.getElementById('nameInput').value;
     userEmail = document.getElementById('emailInput').value;
-    //userCity = document.getElementById('cityInput').value;
+
     var currentUser = db.collection( "teachers" ).doc( user.uid );
 
     currentUser.update({
         name: userName,
         email: userEmail,
-        //city: userCity
     })
     .then(() => {
         console.log("Document successfully updated!");
     })
 
     document.getElementById('personalInfoFields').disabled = true;
+    
 })}
