@@ -1,13 +1,16 @@
 
 var speak = document.getElementById('speak');
-var texarea = document.getElementById('textarea');
+var textarea = document.getElementById("editor");
 var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
-speak.addEventListener('click', function () {
+/*speak.addEventListener('click', */
+function activateSpeech () {
   recognition.start();
   textarea.innerHTML = '...speaking';
 
-})
+}
+
+activateSpeech();
 
 recognition.onresult = function (e) {
   console.log(e);
