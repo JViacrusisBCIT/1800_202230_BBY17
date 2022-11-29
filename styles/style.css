@@ -127,6 +127,17 @@ body {
   margin: 5% auto;
 }
 
+#visual {
+  display: block;
+  width: auto;
+  height: 90%;
+  margin: 0 auto;
+}
+
+#visual-head {
+  text-align: center;
+}
+
 /*/////////////////////////////
 ///////////////////////////////
 /////////////////////////////*/

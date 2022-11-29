@@ -15,6 +15,16 @@ if (isNewDoc && sessionStorage.getItem("newDoc"))
     let modalTitle = newFileModal.querySelector('.modal-title');
     modalTitle.textContent = 'New File';
 
+
+var tookImage = parameters.searchParams.get("image");
+if (tookImage && sessionStorage.getItem("image")) {
+    // toggle file creation modal
+    bsNewFileModal.show();
+    console.log("modal toggled");
+    let modalTitle = newFileModal.querySelector('.modal-title');
+    modalTitle.textContent = 'New File';
+}
+
 // confirm file creation 
 confirmCreateButton.addEventListener('click', function (event) {
     //hides the file creation modal
@@ -24,9 +34,10 @@ confirmCreateButton.addEventListener('click', function (event) {
     let fileName = fileNameField.value;
     fileNameField.value = "";
 
-    console.log(fileName);
-
-    writeNewFile(fileName, sessionStorage.getItem("newDoc"));
+    if (tookImage)
+        writeImage(fileName, sessionStorage.getItem("image"));
+    else 
+        writeNewFile(fileName, sessionStorage.getItem("newDoc"));
 
 
 })
@@ -39,7 +50,7 @@ function writeNewFile(docName, docContents) {
         fileid: makeId(7),
         filename: docName,
         filetype: "quill",
-        isVisual: "false",
+        isvisual: false,
         studentid: parameters.searchParams.get("studentid")
     }).then(() => {
         window.location.replace("files.html?studentid=" + parameters.searchParams.get("studentid"));
@@ -48,6 +59,26 @@ function writeNewFile(docName, docContents) {
     isNewDoc = "";
     sessionStorage.removeItem("newDoc");
     sessionStorage.removeItem("newDoc_changed");
+
+}
+
+
+// creates a new file in the firesetore database
+function writeImage(imageName, imageContents) {
+
+    db.collection("files").add({
+        content: imageContents,
+        fileid: makeId(7),
+        filename: imageName,
+        filetype: "image",
+        isvisual: true,
+        studentid: parameters.searchParams.get("studentid")
+    }).then(() => {
+        window.location.replace("files.html?studentid=" + parameters.searchParams.get("studentid"));
+    });
+
+    tookImage = "";
+    sessionStorage.removeItem("image");
 
 }
 
