@@ -19,8 +19,6 @@
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-  <!-- Our Javascript Files -->
-  <!-- put scripts here--> 
 
   <!-- Bootstrap Library CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -42,7 +40,7 @@
 
 <body>
   
-  <div class="container">
+  <div>
 
     <div class="cell nav-bar">
       <nav id="nav"></nav>
@@ -51,26 +49,26 @@
 
 
     
-        <h1>User Profile</h1>
-        <form>
+        
+        <form id="profile">
+          <h1>User Profile</h1>
             <fieldset class="mb-3" id="personalInfoFields" disabled>
-                <div class="form-group">
+                <div class="form-group m-4">
                     <label>Name</label>
-                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                    <input type="text" id="nameInput" class="form-control mt-2" placeholder="Enter your name">
                 </div>
-                <div class="form-group">
+                <div class="form-group m-4">
                     <label>School</label>
-                    <input type="text" id="emailInput" class="form-control" placeholder="Enter your email">
+                    <input type="text" id="emailInput" class="form-control mt-2" placeholder="Enter your email">
                 </div>
                 <!-- <div class="form-group">
                     <label>City</label>
                     <input type="text" id="cityInput" class="form-control" placeholder="Enter your city">
                 </div> -->
             </fieldset>
-            <div class="d-flex justify-content-end mt-5">
-                <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
-                <span style="width: 10px"></span>
-                <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+            <div class="d-flex justify-content-end mt-5 m-3">
+                <button type="button" class="btn btn-secondary m-2" onclick="editUserInfo()">Edit</button>
+                <button type="button" class="btn btn-info m-2" onclick="saveUserInfo()">Save</button>
             </div>
         </form>
     
@@ -87,7 +85,7 @@
   <!-- Our JavaScript files -->
   
   <script src="../scripts/firebaseAPI.js"></script>
-  <script src="../scripts/inject_templates.js"></script>
+  <script src="../scripts/injectTemplates.js"></script>
   <script src="../scripts/profile.js"></script>
 
   <script>

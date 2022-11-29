@@ -17,12 +17,13 @@ body {
   margin: 0 auto;
 }
 
-.container {  
+
+/* .container {  
   display: grid; 
   height: 100vh;
   width: 100vh;
-  grid-template-columns: 0.8fr 1.1fr 1.1fr 0.9fr;
-  grid-template-rows: 0.05fr 0.8fr 1.4fr 1.4fr 0.05fr;
+  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-rows: 10% 20% 30% 30% 10%;
   grid-auto-columns: 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
@@ -35,7 +36,9 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   max-width: unset !important;
-}
+} */
+
+
 
 #navbar-logo{
   cursor: pointer;
@@ -67,10 +70,15 @@ body {
   margin: 0 auto;
 } */
 
+#banner {
+  text-align: center;
+}
+
 #welcome-banner-close-button {
 
   bottom: 22vh;
   left: 35vw;
+
 }
 
 /*/////////////////////////////
@@ -141,17 +149,22 @@ body {
 /////////////////////////////*/
 
 #login-prompt-container {
-  position: relative;
-  left: 200%;
-  top: 100%;
+  margin: 10% auto;
+  left: 50%;
+  width: 100%;
+  top: 50%;
+  text-align: center;
+  padding: 10%;
+  background-color: #f8f9fa;
+  border: 1px solid lightgrey;
+  box-shadow: 2px 4px lightgray;
+  border-radius: 2%;  
 }  
 
 #firebaseui-auth-container {
-  position: relative;
-  left: 200%;
-  top: 100%;
+  margin: 10% auto;
+  width: 100%;
 }
-
 
 
 #add-new-classroom-button {
@@ -159,6 +172,12 @@ body {
   bottom: 50vw - 50%;
   top: 50vh - 50%;
 }
+
+#profile {
+  margin: 5%;
+}
+
+
 /*................................................
 .container {
   position: absolute;
@@ -180,7 +199,7 @@ body {
 }
 
 
-
+/* 
  .eyebox{
     display: flex;
   }
@@ -214,5 +233,5 @@ body {
 
   #eye2{
     flex: 2;
-  }
+  } */
 

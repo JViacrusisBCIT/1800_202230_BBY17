@@ -7,7 +7,7 @@
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=yes" >
 
   <!-- Our Stylesheets -->
   <link rel="stylesheet" href="../styles/style.css">
@@ -46,9 +46,9 @@
 </head>
 
 
-<body class="overflow-auto">
+<body>
 
-  <div class="container-fluid">
+  <div class="container">
 
 
 
@@ -58,93 +58,26 @@
       <nav id="nav"></nav>
     </div>
 
-    <style>
-      #content-container::before {
-        transform: scaleX(0);
-        transform-origin: bottom right;
-      }
 
-      #content-container:hover::before {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-      }
+    <br>
 
-      #content-container::before {
-        content: " ";
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        inset: 0 0 0 0;
-        background: rgb(90, 184, 231);
-        z-index: -1;
-        transition: transform .3s ease;
-      }
+    <div class="cell welcome-banner justify-content-start row" id="welcome-banner">
 
-      #content-container {
-        position: relative;
-        /* font-size: 5rem; */
-      }
-    </style>
-
-    <!-- <h2>Welcome</h2> -->
-    <br><br>
-
-
-
-    <div class="row justify-content-center" id="awesome-welcome">
-
-      <div class="content col-8 col-md-6 col-lg-5 col-xl-4">
-        <div class="content__container" id="content-container">
-          <p class="content__container__text">
-            Hello
-          </p>
-
-          <ul class="content__container__list">
-            <li class="content__container__list__item">world !</li>
-            <li class="content__container__list__item">comp1800 !</li>
-            <li class="content__container__list__item">users !</li>
-            <li class="content__container__list__item">everybody !</li>
-            <li class="content__container__list__item">teachers !</li>
-          </ul>
-        
-        </div>
-      </div>
-
-      <div class="col-2" style="width: 20%; display: none;">
-        words
-      </div>
-
-
-    </div>
-
-    <br><br>
-
-    <!-- <div class="row">
-        <div></div>
-
-      </div> -->
-
-
-    <div class="cell welcome-banner justify-content-cente row" id="welcome-banner">
-
-      <div class="col-3"></div>
-      <div class="jumbotron col-4">
+      <div class="col-4"></div>
+      <div id="banner" class="jumbotron col-4">
         <div>
 
-          <!-- <h1 class="display-3">Thank you!</h1> -->
+          <h3 class="display-3">Thank you!</h3>
           <p>We're glad you chose iinsight.</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Start tutorial</a></p>
-          <p><a class="btn btn-secondary btn-lg" href="#" role="button"
-              onclick="hideDivs('welcome-banner', 'awesome-welcome')">Skip</a></p>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">Start tutorial</a>
+          <a class="btn btn-secondary btn-lg m-2" href="#" role="button"
+              onclick="hideDivs('welcome-banner')">Skip</a></p>
         </div>
       </div>
 
-      <div class="col-2">
+      <div class="col-1">
         <img id="welcome-banner-close-button" src="../images/x-svgrepo-com.svg" class="btn btn-light" type="submit"
-          onclick="hideDivs('welcome-banner', 'awesome-welcome')">
+          onclick="hideDivs('welcome-banner')">
       </div>
 
     </div>
@@ -164,14 +97,22 @@
 
     <div class="row justify-content-center m-0">
 
-      <div class="cell tile tile1 new-document col d-flex justify-content-end">
+
+      <div class="cell tile tile1 new-document col-auto  col-xl-4 d-flex justify-content-end">
+        <div class="row">
+          <div class="col">
         <button type="button" class="btn btn-light btn-square-md" onclick="location.href='textEditor.html';">
           <img id="new-document-button" src="../images/pen-svgrepo-com_1.svg" class="btn" type="submit">
         </button>
       </div>
+    </div>
+  </div>
 
-      <div class="cell tile tile2 new-recorded-document col">
-        <button type="button" class="btn btn-light btn-square-md" onclick="location.href='speech.html';">
+
+
+      <div class="cell tile tile2 new-recorded-document col-auto  col-xl-4 d-flex justify-content-start">
+        <button type="button" class="btn btn-light btn-square-md mb-1">
+
           <img id="new-recorded-document-button" src="../images/microphone-svgrepo-com.svg" class="btn" type="submit">
         </button>
       </div>
@@ -179,13 +120,18 @@
     </div>
 
     <div class="row justify-content-center">
-      <div class="cell tile tile3 new-media col d-flex justify-content-end">
+
+      <div class="cell tile tile3 new-media col-auto d-flex justify-content-end  col-xl-4">
         <button type="button" class="btn btn-light btn-square-md" onclick="location.href='camera.html';">
+
+
+
           <img id="new-media-button" src="../images/camera-svgrepo-com.svg" class="btn" type="submit">
         </button>
       </div>
 
-      <div class="cell tile tile4 view-files col">
+
+      <div class="cell tile tile4 view-files col-auto col-xl-4 ">
         <button type="button" class="btn btn-light btn-square-md" onclick="location.href='classrooms.html';">
           <img id="view-files-button" src="../images/folder-svgrepo-com.svg" class="btn" type="submit">
         </button>
@@ -200,8 +146,10 @@
     <!-- </div> -->
 
     <!-- Our Javascript Files -->
-    <script src="../scripts/inject_templates.js"></script>
+    <script src="../scripts/injectTemplates.js"></script>
     <!-- <script src="../scripts/eyeball.js"></script> -->
+
+  </div>
 
 </body>
 
