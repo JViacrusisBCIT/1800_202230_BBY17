@@ -30,7 +30,7 @@ function populateInfo ()
 
         } else
         {
-            console.log( "no user is logged in" )
+            location.href = 'login.html';
         }
     }
 
