@@ -8,27 +8,17 @@ function populateInfo ()
         {
             // go and get the curret user info from firestore
             var currentUser = db.collection( "teachers" ).doc( user.uid );
-            console.log(currentUser)
+
             currentUser.get()
                 .then( userDoc =>
                 {
                     let userName = userDoc.data().name;
-                    // let userEmail = userDoc.data().email;
-                    //let userCity = userDoc.data().city;
 
                     if ( userName != null )
                     {
-                        document.getElementById( "name-welcome" ).innerHTML = "Welcome, " + userName ;
+                        document.getElementById( "name-welcome" ).innerHTML = "Welcome, <br>" + userName ;
                     }
-                    // if ( userEmail != null )
-                    // {
-                    //     document.getElementById( "emailInput" ).value = userEmail;
-                    // }
-                    // if ( userCity != null )
-                    // { 
-                    //     console.log(userCity)
-                    //     document.getElementById( "cityInput" ).value = userCity;
-                    // }
+
                 } )
 
         } else
@@ -41,5 +31,3 @@ function populateInfo ()
 
 }
 populateInfo()
-// console.log("hello")
-// document.getElementById( "name-welcome" ).innerHTML = "Welcomedfgfdfgvcf";
