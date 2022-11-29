@@ -83,15 +83,12 @@ body {
   height: auto;
 }
 
-.card-img-container {
-  width: 100%;
-}
-
 
 .card-logo {
   display: inline;
   width: 16%;
   aspect-ratio: 1 / 1;
+  margin: 5%;
 }
 
 .card-title {
