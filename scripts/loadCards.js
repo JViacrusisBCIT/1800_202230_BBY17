@@ -27,6 +27,10 @@ var nonVisualCards;
 if (sessionStorage.getItem("newDoc"))
     var isNewDoc = parameters.searchParams.get("newDoc");
 
+// If the user just took an image
+if (sessionStorage.getItem("image"))
+    var tookImage = parameters.searchParams.get("image");
+
 
 
 // Injects a single card into the gallery
@@ -137,6 +141,9 @@ function loadClassrooms() {
                                 if (isNewDoc && sessionStorage.getItem("newDoc"))
                                     redirectPath += "&newDoc=true";
 
+                                if (tookImage && sessionStorage.getItem("image"))
+                                    redirectPath += "&image=true";
+
                                 displayCard(numOfCards, redirectPath, classroom.data().name, "user.svg", "");
 
                                 numOfCards++;
@@ -165,6 +172,9 @@ function loadClassrooms() {
 
                                     if (isNewDoc && sessionStorage.getItem("newDoc"))
                                         redirectPath += "&newDoc=true";
+
+                                    if (tookImage && sessionStorage.getItem("image"))
+                                        redirectPath += "&image=true";
                                     
                                     if (numOfCards <= alreadyCreated) {
 
@@ -220,6 +230,9 @@ function loadStudents() {
 
                 if (isNewDoc && sessionStorage.getItem("newDoc"))
                     redirectPath += "&newDoc=true";
+
+                if (tookImage && sessionStorage.getItem("image"))
+                    redirectPath += "&image=true";
                 
                 let card = displayCard(numOfCards, redirectPath, fullName, "user.svg", "");
 
@@ -247,6 +260,9 @@ function loadStudents() {
 
                         if (isNewDoc && sessionStorage.getItem("newDoc"))
                             redirectPath += "&newDoc=true";
+
+                        if (tookImage && sessionStorage.getItem("image"))
+                            redirectPath += "&image=true";
 
                         if (numOfCards <= alreadyCreated) {
 
@@ -289,12 +305,13 @@ function loadFiles() {
                 let card;
 
                 let redirectPath = "textEditor.html?fileid=" + file.data().fileid;
-
+                
                 if (file.data().isvisual) {
-
+                    console.log("isVisual");
                     card = displayCard(i, redirectPath, file.data().filename, "user.svg", "drink1.png");
 
                 } else {
+                    console.log("!isvisual");
 
                     card = displayCard(i, redirectPath, file.data().filename, "user.svg", "");
 

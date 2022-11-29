@@ -14,10 +14,19 @@ var confirmation = document.getElementById("confirmation");
 var params = new URL(window.location.href);
 var fileID;
 
-if (params.searchParams.get("fileid"))
+if (params.searchParams.get("fileid")) {
+
   fileID = params.searchParams.get("fileid");
-else
+
+} else {
+
   fileID = "newDoc";
+  document.getElementById("header").innerHTML = "New Document";
+  document.getElementById("visual").remove();
+
+}
+
+
 
 
 
@@ -76,11 +85,27 @@ function loadFromDatabase() {
         // Reads the JSON from the database
         let json = file.data().content;
 
-        // Converts to the Delta object
+        // Converts out of JSON
         delta = JSON.parse(json);
+        
+        document.getElementById("header").innerHTML = file.data().filename;
 
-        // Puts those contents into quill
-        quill.setContents(delta);
+        if (file.data().isvisual) {
+
+          document.getElementById("visual").src = delta;
+
+          document.getElementById("nonvisual").remove();
+
+        } else {
+
+          document.getElementById("header").innerHTML = file.data().filename;
+          document.getElementById("visual").remove();
+
+          // Puts those contents into quill
+          quill.setContents(delta);
+
+        }     
+        
 
       });
 
