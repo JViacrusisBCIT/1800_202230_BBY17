@@ -62,7 +62,9 @@
           <div id="editor-container">
             <div id="editor" placeholder="Enter Text"></div>
           </div>
-          <button class="mt-4" id="speak">Type to Speak</button>
+          <div class="mt-4">
+            <button id="speak" onclick="activateSpeech()">Type to Speak</button>
+          </div>
           <button id="discard" type="button" class="mt-4" onclick="discardChanges('discard')">Discard Changes</button>
           <button id="cancel" type="button" onclick="discardChanges('cancel')">Cancel</button>
           <p id="warning" class="mt-3"></p>

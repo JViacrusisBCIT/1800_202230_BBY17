@@ -8,19 +8,18 @@ if (params.searchParams.get("fileid"))
 else
   fileID = "newDoc";
 
-
-
+  
 var speak = document.getElementById('speak');
 var textarea = document.getElementById("editor");
 var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
 
 var quill = Quill.find(textarea);
-
+ 
 var delta;
 var transcript;
-
-
+  
+  
 function activateSpeech () {
 
   transcript = 0;
