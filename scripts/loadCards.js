@@ -46,10 +46,11 @@ function displayCard(idIndex, redirectPath, cardTitle, filePath, thumbnailPath) 
 
 
     if (thumbnailPath.length != 0) {
-        newCard.querySelector('.card-img-top').src = '../images/' + thumbnailPath;
+        newCard.querySelector('.card-img-top').src = thumbnailPath;
         visualCards.appendChild(newCard);
     } else {
-        newCard.querySelector('.card-img-top').remove();
+
+        newCard.querySelector('.card-img-container').remove();
         nonVisualCards.appendChild(newCard);
     }
     
@@ -144,7 +145,7 @@ function loadClassrooms() {
                                 if (tookImage && sessionStorage.getItem("image"))
                                     redirectPath += "&image=true";
 
-                                displayCard(numOfCards, redirectPath, classroom.data().name, "user.svg", "");
+                                displayCard(numOfCards, redirectPath, classroom.data().name, "classroom.svg", "");
 
                                 numOfCards++;
                         
@@ -178,7 +179,7 @@ function loadClassrooms() {
                                     
                                     if (numOfCards <= alreadyCreated) {
 
-                                        displayCard(numOfCards, redirectPath, classroom.data().name, "user.svg", "");
+                                        displayCard(numOfCards, redirectPath, classroom.data().name, "classroom.svg", "");
                                         numOfCards++;
 
                                     }
@@ -234,7 +235,7 @@ function loadStudents() {
                 if (tookImage && sessionStorage.getItem("image"))
                     redirectPath += "&image=true";
                 
-                let card = displayCard(numOfCards, redirectPath, fullName, "user.svg", "");
+                let card = displayCard(numOfCards, redirectPath, fullName, "student.svg", "");
 
                 numOfCards++;
 
@@ -266,7 +267,7 @@ function loadStudents() {
 
                         if (numOfCards <= alreadyCreated) {
 
-                            displayCard(numOfCards, redirectPath, std.data().name, "user.svg", "");
+                            displayCard(numOfCards, redirectPath, std.data().name, "student.svg", "");
                             numOfCards++;
 
                         }
@@ -307,13 +308,18 @@ function loadFiles() {
                 let redirectPath = "textEditor.html?fileid=" + file.data().fileid;
                 
                 if (file.data().isvisual) {
-                    console.log("isVisual");
-                    card = displayCard(i, redirectPath, file.data().filename, "user.svg", "drink1.png");
+
+                    // Reads the JSON from the database
+                    var json = file.data().content;
+
+                    // Converts out of JSON
+                    var delta = JSON.parse(json);
+
+                    card = displayCard(i, redirectPath, file.data().filename, "file.svg", delta);
 
                 } else {
-                    console.log("!isvisual");
 
-                    card = displayCard(i, redirectPath, file.data().filename, "user.svg", "");
+                    card = displayCard(i, redirectPath, file.data().filename, "file.svg", "");
 
                 }                
 
