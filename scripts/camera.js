@@ -24,24 +24,10 @@ cameraTrigger.onclick = function() {
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-    //cameraOutput.src = cameraSensor.toDataURL("image/png");
-    
-    //cameraOutput.classList.add("taken");
-
-    saveImage();
-
+    cameraOutput.src = cameraSensor.toDataURL("image/png");
+    console.log()
+    cameraOutput.classList.add("taken");
 };
-
-
-function saveImage() {
-
-    var json = JSON.stringify(cameraSensor.toDataURL('image/jpeg'));
-    sessionStorage.setItem("image", json);
-    window.location.href = "classrooms.html?image=true";
-
-}
-
-
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
 
