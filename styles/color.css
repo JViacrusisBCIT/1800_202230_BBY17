@@ -3,6 +3,10 @@
     background-color: #008891 !important;
   }
 
+  .btn-primary {
+    --bs-bg-opacity: 1;
+    background-color: #008891 !important;
+  }
 
 
 .color-call-cta {
