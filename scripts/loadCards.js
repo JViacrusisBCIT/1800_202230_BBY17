@@ -195,6 +195,10 @@ function loadClassrooms() {
 
                 })  
 
+        } else {
+
+            location.href = 'login.html';
+
         }
 
     });
