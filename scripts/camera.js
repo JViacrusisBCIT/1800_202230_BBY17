@@ -1,11 +1,14 @@
-// camera js file
 // Set constraints for the video stream
 var constraints = { video: { facingMode: "user" }, audio: false };
+
+
 // Define constants
 const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
     cameraSensor = document.querySelector("#camera--sensor"),
     cameraTrigger = document.querySelector("#camera--trigger")
+
+
 // Access the device camera and stream to cameraView
 function cameraStart() {
     console.log("cameraStart");
@@ -18,7 +21,9 @@ function cameraStart() {
     .catch(function(error) {
         console.error("Oops. Something is broken.", error);
     });
+
 }
+
 // Take a picture when cameraTrigger is tapped
 cameraTrigger.onclick = function() {
     cameraSensor.width = cameraView.videoWidth;
@@ -29,6 +34,7 @@ cameraTrigger.onclick = function() {
     
 };
 
+// Sves the image to the session storage
 function saveImage() {
 
     var json = JSON.stringify(cameraSensor.toDataURL('image/jpeg'));

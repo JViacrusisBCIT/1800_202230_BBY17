@@ -7,7 +7,7 @@
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=yes" >
+  <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=yes">
 
   <!-- Our Stylesheets -->
   <link rel="stylesheet" href="../styles/style.css">
@@ -46,30 +46,25 @@
 
 <body>
 
-  <div class="container">
-
-
-
-    <!-- <div class="row"> -->
+  <div class="container overflow-hidden">
 
     <div class="cell nav-bar row">
       <nav id="nav"></nav>
     </div>
 
-
-    <br>
+    <br />
 
     <div class="cell welcome-banner justify-content-start row" id="welcome-banner">
 
       <div class="col-4"></div>
+
       <div id="banner" class="jumbotron col-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 justify-content-start">
         <div>
-
           <h3 class="display-6" id="name-welcome">Thank you!</h3>
           <p>We're glad you chose iinsight.</p>
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Start tutorial</a>
-          <a class="btn btn-secondary btn-lg m-2" href="#" role="button"
-              onclick="hideDivs('welcome-banner')">Skip</a></p>
+            <a class="btn btn-secondary btn-lg m-2" href="#" role="button" onclick="hideDivs('welcome-banner')">Skip</a>
+          </p>
         </div>
       </div>
 
@@ -81,36 +76,21 @@
     </div>
 
 
-
-
-
-
-
-    <!-- <div class="eyebox">
-          <div class="eyes" id="eye1"></div>
-          <div class="eyes" id="eye2"></div>
-        </div>
-      </div> -->
-
-
     <div class="row justify-content-center m-0">
-
-
       <div class="cell tile tile1 new-document col-auto  col-xl-4 d-flex justify-content-end">
         <div class="row">
           <div class="col">
-        <button type="button" class="btn btn-light btn-square-md" onclick="location.href='textEditor.html';">
-          <img id="new-document-button" src="../images/pen-svgrepo-com_1.svg" class="btn" type="submit">
-        </button>
+            <button type="button" class="btn btn-light btn-square-md" onclick="location.href='textEditor.html';">
+              <img id="new-document-button" src="../images/pen-svgrepo-com_1.svg" class="btn" type="submit">
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-
 
 
       <div class="cell tile tile2 new-recorded-document col-auto  col-xl-4 d-flex justify-content-start">
-        <button type="button" class="btn btn-light btn-square-md mb-1" onclick="location.href='textEditor.html?voice=true';">
-
+        <button type="button" class="btn btn-light btn-square-md mb-1"
+          onclick="location.href='textEditor.html?voice=true';">
           <img id="new-recorded-document-button" src="../images/microphone-svgrepo-com.svg" class="btn" type="submit">
         </button>
       </div>
@@ -121,9 +101,6 @@
 
       <div class="cell tile tile3 new-media col-auto d-flex justify-content-end  col-xl-4">
         <button type="button" class="btn btn-light btn-square-md" onclick="location.href='camera.html';">
-
-
-
           <img id="new-media-button" src="../images/camera-svgrepo-com.svg" class="btn" type="submit">
         </button>
       </div>
@@ -134,24 +111,22 @@
           <img id="view-files-button" src="../images/folder-svgrepo-com.svg" class="btn" type="submit">
         </button>
       </div>
+
     </div>
 
-    <br/>
-    <br/>
+
+    <br />
+    <br />
 
 
     <div class="cell footer row">
       <nav id="foot"></nav>
     </div>
 
-
-    <!-- </div> -->
-
     <!-- Our Javascript Files -->
     <script src="../scripts/injectTemplates.js"></script>
     <script src="../scripts/firebaseAPI.js"></script>
     <script src="../scripts/main.js"></script>
-    <!-- <script src="../scripts/eyeball.js"></script> -->
 
   </div>
 
