@@ -43,6 +43,8 @@
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+  <link rel="stylesheet" href="../styles/color.css">
+
 </head>
 
 
@@ -67,12 +69,12 @@
             <div id="editor" placeholder="Enter Text"></div>
           </div>
           <div class="mt-4">
-            <button id="speak" onclick="activateSpeech()">Click to Activate Speech</button>
+            <button id="speak" class="btn color-call-cta" onclick="activateSpeech()">Click to Activate Speech</button>
           </div>
-          <button id="discard" type="button" class="mt-4" onclick="discardChanges('discard')">Discard Changes</button>
+          <button id="discard" type="button" class="mt-4 btn bg-danger" onclick="discardChanges('discard')">Discard Changes</button>
           <button id="cancel" type="button" onclick="discardChanges('cancel')">Cancel</button>
           <p id="warning" class="mt-3"></p>
-          <button id="continue" type="button" class="btn btn-dark mt-3"></button>
+          <button id="continue" type="button" class="btn btn-light color-call-cta mt-3"></button>
           <p id="confirmation" class="mt-3"></p>
         </div>
     </div>
