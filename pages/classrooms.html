@@ -37,8 +37,6 @@
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <link rel="stylesheet" href="../styles/color.css">
-
 </head>
 
 
@@ -51,7 +49,7 @@
         <div class="card h-100">
           <div class="card-img-container d-flex align-items-end justify-content-center">
             <img src="../images/drink1.png" class="card-img-top" alt="...">
-          </div>          
+          </div>
           <div class="card-body">
             <img src="../images/image.jpg" class="card-logo" />
             <h5 class="card-title">Card title</h5>
@@ -61,41 +59,6 @@
     </div>
   </template>
 
-  <!-- Modal hidden until "add new" button is pressed -->
-  <button type="button" id="add-new-classroom-button" data-bs-toggle="modal" data-bs-target="#new-classroom-modal"
-    class="btn btn-light btn-square-md">
-    <img id="add-new-classroom-icon" src="../images/plus-sign.svg" class="btn color-call-cta" type="submit">
-  </button>
-
-  <div class="modal fade" id="new-classroom-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Placeholder</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Class Name</label>
-              <input type="text" class="form-control" id="class-name">
-            </div>
-          </form>
-          <form>
-            <label for="student-list-file" class="col-form-label">Optional Student List</label>
-            <br>
-            <input type="file" id="myfile" name="myfile">
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button id="confirm-create-button" type="button" class="btn btn-primary">Create</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
   <div class="container">
 
     <div class="cell nav-bar">
@@ -104,13 +67,44 @@
 
     <div id="gallery" class="gallery"></div>
 
+    <!-- Modal hidden until "add new" button is pressed -->
+    <button type="button" id="add-new-classroom-button" data-bs-toggle="modal" data-bs-target="#new-classroom-modal"
+      class="btn btn-light btn-square-md">
+      <img id="add-new-classroom-icon" src="../images/plus-sign.svg" class="btn" type="submit">
+    </button>
 
+    <div class="modal fade" id="new-classroom-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Placeholder</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Class Name</label>
+                <input type="text" class="form-control" id="class-name">
+              </div>
+            </form>
+            <form>
+              <label for="student-list-file" class="col-form-label">Optional Student List</label>
+              <br>
+              <input type="file" id="myfile" name="myfile">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button id="confirm-create-button" type="button" class="btn btn-primary">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="cell footer">
       <nav id="foot"></nav>
     </div>
-
-
 
   </div>
 
