@@ -1,4 +1,4 @@
-## My Web Application (Add your Title here)
+## iinsight - File Storage for Teachers
 
 * [General info](#general-info)
 * [Technologies](#technologies)
