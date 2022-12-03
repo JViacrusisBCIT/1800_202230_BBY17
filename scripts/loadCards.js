@@ -132,7 +132,10 @@ function loadClassrooms() {
                     .where("teacherid", "==", teacherID)
                     .get()
                         .then(classrooms => {
-                            setupGallery(6, "", "Classrooms");
+
+                            var header = isNewDoc ? "Select a Classroom..." : "Classrooms";
+
+                            setupGallery(6, "", header);
 
                             // For each classroom, display a card with a unique ID and the class name in the footer.
                             classrooms.forEach(classroom => {
@@ -219,7 +222,9 @@ function loadStudents() {
     .get()
         .then(students => {
 
-            setupGallery(6, "", "Students");
+            var header = isNewDoc ? "Select a Student..." : "Students";
+
+            setupGallery(6, "", header);
 
             // For each student, display a card with a unique ID and their full name in the footer.
             students.forEach(std => {
@@ -323,7 +328,7 @@ function loadFiles() {
 
                 } else {
 
-                    card = displayCard(i, redirectPath, file.data().filename, "file.svg", "");
+                    card = displayCard(i, redirectPath, file.data().filename, "file-icon.svg", "");
 
                 }                
 
