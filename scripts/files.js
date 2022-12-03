@@ -11,7 +11,6 @@ var isNewDoc = parameters.searchParams.get("newDoc");
 if (isNewDoc && sessionStorage.getItem("newDoc"))
     // toggle file creation modal
     bsNewFileModal.show();
-    console.log("modal toggled");
     let modalTitle = newFileModal.querySelector('.modal-title');
     modalTitle.textContent = 'New File';
 
@@ -20,7 +19,6 @@ var tookImage = parameters.searchParams.get("image");
 if (tookImage && sessionStorage.getItem("image")) {
     // toggle file creation modal
     bsNewFileModal.show();
-    console.log("modal toggled");
     let modalTitle = newFileModal.querySelector('.modal-title');
     modalTitle.textContent = 'New File';
 }

@@ -8,13 +8,13 @@ var bsNewStudentModal = new bootstrap.Modal(document.getElementById('new-student
 })
 var confirmCreateButton = document.getElementById('confirm-create-button')
 
-
+//toggles modal
 newStudentModal.addEventListener('show.bs.modal', function (event) {
-    console.log("modal toggled");
     let modalTitle = newStudentModal.querySelector('.modal-title');
     modalTitle.textContent = 'New Student';
 })
 
+// confirm button creates a student according to fields
 confirmCreateButton.addEventListener('click', function (event) {
 
     //hides the classroom creation modal
@@ -33,7 +33,6 @@ confirmCreateButton.addEventListener('click', function (event) {
 
 // creates a student in the firesetore database
 function createStudent(sName, classId, teacherId) {
-    console.log(teacherId);
     db.collection("students").add({
         name: sName,
         studentid: makeId(),

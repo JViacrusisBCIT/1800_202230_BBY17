@@ -56,9 +56,6 @@ function editUserInfo() {
         name: userName,
         email: userEmail,
     })
-    .then(() => {
-        console.log("Document successfully updated!");
-    })
 
     document.getElementById('personalInfoFields').disabled = true;
     

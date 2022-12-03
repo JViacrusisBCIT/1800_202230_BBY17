@@ -9,13 +9,8 @@ function makeid(length) {
   return result;
 }
 
-
-console.log("starting auth process.");
-
-
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
 
 var uiConfig = {
   callbacks: {

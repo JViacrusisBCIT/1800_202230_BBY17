@@ -45,7 +45,6 @@ function activateSpeech () {
 // When the app obtains speech content from the user
 recognition.onresult = function (e) {
 
-  console.log(e);
   transcript = e.results [0][0].transcript;
 
   quill.setContents(delta);

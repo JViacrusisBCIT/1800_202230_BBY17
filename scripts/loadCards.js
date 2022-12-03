@@ -126,7 +126,6 @@ function loadClassrooms() {
                 .then(teacher => {
 
                     teacherID = teacher.data().teacherid;
-                    console.log("user logged in: " + teacher.data().name);
 
                     db.collection("classes")
                     .where("teacherid", "==", teacherID)

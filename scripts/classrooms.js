@@ -6,7 +6,6 @@ var confirmCreateButton = document.getElementById('confirm-create-button')
 
 // toggle classroom creation modal
 newClassroomModal.addEventListener('show.bs.modal', function (event) {
-    console.log("modal toggled");
     let modalTitle = newClassroomModal.querySelector('.modal-title');
     modalTitle.textContent = 'New Classroom';
 })
@@ -68,7 +67,6 @@ function createClassroom(cName, teacherId, callback) {
 
 // creates a student in the firesetore database
 function createStudent(sName, sId, classId, teacherId) {
-    console.log(teacherId);
     db.collection("students").add({
         name: sName,
         studentid: sId,
