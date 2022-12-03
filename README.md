@@ -5,7 +5,7 @@
 * [Contents](#content)
 
 ## General Info
-Welcome to iinsight, iinsight is an app to help educators manage their data and save time. iinsight allows educators to sync data between devices, quickly take notes, and capture pictures all in the app, and this is just the tip of the iceberg!
+Welcome to iinsight! iinsight is an app to help educators manage their data and save time. iinsight allows educators to sync data between devices, quickly take notes, and capture pictures all in the app, and this is just the tip of the iceberg!
 
 
 	
@@ -22,24 +22,25 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore        # Git ignore file
-├── index.html        #landing html, redirect to landing page
-└── README.md         #You're reading this currently
+├── index.html        # Landing page, automatically redirects to welcome.html
+└── README.md         # This file
 
 
 It has the following subfolders and files:
-├── .git                     # Folder for git repo
-├── images                   # Folder for images
-    /back-arrow-svgrepo-com.jpg     # back arrow icon
-    /camera-svgrepo-com.svg         # Camera icon
-    /classroom.svg                  # Classroom icon
-    /file.svg                       # file icon
-    /folder-svgrepo-com.svg         # folder iconj
-    /hamburger-menu-svgrepo-com.svg # hamburger menu icon
-    /mic-svgrepo-com.svg            # mic icon
-    /pen-svgrepo-com_1.svg          # pen icon
-    /profile-user-svgrepo-com.svg   # profile icon
-    /student.svg                    # student icon
-    /x-svgrepo-com.svg              # x icon
+├── .git                            # Folder for git repo
+├── images                          # Folder for images
+    /back-arrow-icon.jpg            # back arrow icon
+    /camera-icon.svg                # Camera icon
+    /classroom-icon.svg             # Classroom icon
+    /close-icon.svg                 # x icon
+    /file-icon.svg                  # file icon
+    /folder-icon.svg                # folder icon
+    /hamburger-menu-icon.svg        # hamburger menu icon
+    /home-icon.svg                  # home icon
+    /profile-icon.svg               # profile icon
+    /speech-to-text-icon.svg        # mic icon
+    /student-icon.svg               # student icon
+    /write-document-icon.svg        # pen icon
 
 ├── pages                  # Folder for pages
     /404.html                # 404 page
@@ -76,8 +77,8 @@ It has the following subfolders and files:
     /style.css               # general site wide style 
 
 ├── text                     # nav and foot for all pages
-    /nav_template.html       # navbar
-    /foot_template.html      # footer
+    /navTemplate.html        # navbar
+    /footTemplate.html       # footer
 
 
 Firebase hosting files: 
@@ -94,7 +95,7 @@ Firebase hosting files:
 ```
 
 ## Resources
-- In-app icons from svgrepo(https://svgrepo.com/)
+- In-app icons from svgrepo (https://svgrepo.com/)
 
 ## Contact 
 * Justin Viacrusis - https://github.com/JViacrusisBCIT

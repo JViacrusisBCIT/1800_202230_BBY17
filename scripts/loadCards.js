@@ -145,7 +145,7 @@ function loadClassrooms() {
                                 if (tookImage && sessionStorage.getItem("image"))
                                     redirectPath += "&image=true";
 
-                                displayCard(numOfCards, redirectPath, classroom.data().name, "classroom.svg", "");
+                                displayCard(numOfCards, redirectPath, classroom.data().name, "classroom-icon.svg", "");
 
                                 numOfCards++;
                         
@@ -239,7 +239,7 @@ function loadStudents() {
                 if (tookImage && sessionStorage.getItem("image"))
                     redirectPath += "&image=true";
                 
-                let card = displayCard(numOfCards, redirectPath, fullName, "student.svg", "");
+                let card = displayCard(numOfCards, redirectPath, fullName, "student-icon.svg", "");
 
                 numOfCards++;
 
@@ -319,7 +319,7 @@ function loadFiles() {
                     // Converts out of JSON
                     var delta = JSON.parse(json);
 
-                    card = displayCard(i, redirectPath, file.data().filename, "file.svg", delta);
+                    card = displayCard(i, redirectPath, file.data().filename, "file-icon.svg", delta);
 
                 } else {
 
