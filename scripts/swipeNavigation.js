@@ -2,7 +2,7 @@
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
 
-var xDown = null;//for x direction                                                        
+var xDown = null; //for x direction                                                        
 var yDown = null; // for y direction
 
 function getTouches(evt) {
@@ -29,7 +29,7 @@ function handleTouchMove(evt) { //this function is actually telling it what to d
                                                                          
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
         if ( xDiff > 0 ) {
-            history.forward();//left swipe
+            history.forward(); //left swipe
             // $('.container').toggleClass('show');//dont mess with this
         } else {
             history.back(); //right swipe
