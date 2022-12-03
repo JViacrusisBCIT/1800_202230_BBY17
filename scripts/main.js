@@ -27,7 +27,7 @@ function populateInfo ()
         }
     }
 
-    )
+    );
 
 }
-populateInfo()
+populateInfo();

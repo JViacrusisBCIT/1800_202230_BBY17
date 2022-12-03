@@ -44,7 +44,7 @@ function displayCard(idIndex, redirectPath, cardTitle, filePath, thumbnailPath) 
 
     newCard.querySelector('.redirect').href = redirectPath;
 
-
+    // Appends the thumbnail depending on if card is visual or not
     if (thumbnailPath.length != 0) {
         newCard.querySelector('.card-img-top').src = thumbnailPath;
         visualCards.appendChild(newCard);
