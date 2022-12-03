@@ -70,7 +70,7 @@
     <!-- Modal hidden until "add new" button is pressed -->
     <button type="button" id="add-new-classroom-button" data-bs-toggle="modal" data-bs-target="#new-classroom-modal"
       class="btn btn-light btn-square-md">
-      <img id="add-new-classroom-icon" src="../images/plus-sign-icon.svg" class="btn" type="submit">
+      <img id="add-new-classroom-icon" src="../images/plus-sign-icon.svg" class="btn" type="submit" alt="add new classroom">
     </button>
 
     <div class="modal fade" id="new-classroom-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -82,13 +82,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id="form-control">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Class Name</label>
                 <input type="text" class="form-control" id="class-name">
               </div>
             </form>
-            <form>
+            <form id="student-list-file">
               <label for="student-list-file" class="col-form-label">Optional Student List</label>
               <br>
               <input type="file" id="myfile" name="myfile">
